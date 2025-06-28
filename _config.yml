@@ -1,5 +1,13 @@
+url: "https://elpatatone.github.io"
+baseurl: ""
+
+permalink: "/blog/:slug/"
+post_dirs: false
+
 collections:
   authors:
+    output: true
+  projects:
     output: true
 
 defaults:
@@ -15,6 +23,11 @@ defaults:
       layout: "post"
   - scope:
       path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
     values:
       layout: "default"
 
@@ -22,3 +35,4 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+
