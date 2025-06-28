@@ -1,14 +1,17 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
     {% feed_meta %}
     {% seo %}
   </head>
   <body>
-    {% include navigation.html %}
-    {{ content }}
+    <div class="pagecontents">
+        {% include navigation.html %}
+        <h1 class="page-title">{{ page.title }}</h1>
+        <div class="container">
+            {{ content }}
+        </div>
+    </div>
   </body>
 </html>
