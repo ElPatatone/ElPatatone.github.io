@@ -6,15 +6,14 @@ body {
 div.pagecontents {
     width: 650px;
     margin: 30px auto 0px auto;
-    border-style: solid;
-    border-color: red;
+    /* border-style: solid; */
+    /* border-color: red; */
 }
 div.navbar {
     width: 200px;
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #DEE;
     border-style: solid;
     border-color: blue;
 }
@@ -25,18 +24,19 @@ div.pagecontents p, div.pagecontents li {
 li.post-item {
     display: table;
     width: 100%;
-    border-style: solid;
-    border-color: yellow;
+    /* border-style: solid; */
+    /* border-color: yellow; */
 }
-a.post-title span {
-    /* float: left; */
-    border-style: solid;
-    border-color: red;
+a.post-title {
+    float: left;
+    text-decoration: none;
+    /* border-style: solid; */
+    /* border-color: red; */
 }
-div.post-date i {
-    /* float: right; */
-    border-style: solid;
-    border-color: red;
+div.post-date {
+    float: right;
+    /* border-style: solid; */
+    /* border-color: red; */
 }
 h1, h2, h2 {
     line-height: 1.2;
@@ -65,10 +65,7 @@ pre {
 footer hr {
     margin-top: 40px;
 }
-/* Inline code */
-code.highlighter-rouge {
-    color: green;
-}
+
 table {
   margin: 15px 0;
   padding: 0; }
@@ -108,36 +105,32 @@ sub {
   top: 0.4em;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #dfdfdf;
-    background: #101010;
-  }
-  div.navbar {
-    background-color: #212121;
-  }
-  a[href] {
-    color: #9e9eff;
-  }
-  a[href]:visited {
-    color: #bebedf;
-  }
-  code.highlighter-rouge {
-    color: #fe8019;
-  }
-  svg, object.svg, img.svg, img[src$=".svg"] {
-    filter: invert(100%);
-  }
-  table tr {
-    border-top: 1px solid #555;
-    background-color: #121212;
-  }
-  table tr:nth-child(2n) {
-    background-color: #212121;
-  }
-  li code, p code {
-    color: #fe8019;
-  }
+body {
+  color: #dfdfdf;
+  /* background: #101010; */
+  background: black;
+}
+div.navbar {
+  background-color: #212121;
+}
+a[href] {
+  color: #9e9eff;
+}
+a[href]:visited {
+  color: #bebedf;
+}
+code.highlighter-rouge {
+  color: #fe8019;
+}
+table tr {
+  border-top: 1px solid #555;
+  background-color: #121212;
+}
+table tr:nth-child(2n) {
+  background-color: #212121;
+}
+li code, p code {
+  color: #fe8019;
 }
 
 /* Stuff for posts */

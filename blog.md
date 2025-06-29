@@ -8,8 +8,10 @@ blog_index: true
     {% for post in site.posts %}
     {% unless post.draft == true or post.series %}
     <li class="post-item">
-        <a class="post-title" href="{{ post.url }}"><span>{{ post.title }}</span></a>
-        <div class="post-date"><i>{{ post.date | date: '%B %-d, %Y' }}</i></div>
+        <a class="post-title" href="{{ post.url }}">{{ post.title }}</a>
+        <div class="post-date">
+            <i>{{ post.date | date: '%B %-d, %Y' }}</i>
+        </div>
     </li>
     {% endunless %}
     {% endfor %}
