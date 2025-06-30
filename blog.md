@@ -4,6 +4,8 @@ layout: default
 blog_index: true
 ---
 
+<h1 class="page-title">{{ page.title }}</h1>
+
 <ul>
     {% for post in site.posts %}
     {% unless post.draft == true or post.series %}

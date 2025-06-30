@@ -3,6 +3,8 @@ layout: default
 title: Projects 
 ---
 
+<h1 class="page-title">{{ page.title }}</h1>
+
 <ul>
   {% for project in site.projects %}
     <li class="post-item">

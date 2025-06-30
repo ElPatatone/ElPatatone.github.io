@@ -36,8 +36,8 @@ div.pagecontents p, div.pagecontents li {
 li.post-item {
   display: table;
   width: 100%;
-  border-style: solid;
-  border-color: yellow;
+  /* border-style: solid; */
+  /* border-color: yellow; */
 }
 
 a.post-title {
