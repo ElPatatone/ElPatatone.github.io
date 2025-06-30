@@ -1,6 +1,0 @@
-div.pagecontents {
-    counter-reset: figures;
-    margin: 30px auto 0px auto;
-    border-style: solid;
-    border-color: red;
-}
