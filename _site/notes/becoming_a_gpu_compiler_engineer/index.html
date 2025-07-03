@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Becoming_a_gpu_compiler_engineer</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Becoming_a_gpu_compiler_engineer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Link to the post" />
+<meta property="og:description" content="Link to the post" />
+<link rel="canonical" href="http://localhost:4000/notes/becoming_a_gpu_compiler_engineer/" />
+<meta property="og:url" content="http://localhost:4000/notes/becoming_a_gpu_compiler_engineer/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-03T19:06:44+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Becoming_a_gpu_compiler_engineer" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-03T19:06:44+01:00","datePublished":"2025-07-03T19:06:44+01:00","description":"Link to the post","headline":"Becoming_a_gpu_compiler_engineer","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/becoming_a_gpu_compiler_engineer/"},"url":"http://localhost:4000/notes/becoming_a_gpu_compiler_engineer/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">Becoming_a_gpu_compiler_engineer</h1> -->
+        <div class="container">
+            <p><a href="https://www.reddit.com/r/Compilers/comments/1g4fnbg/becoming_a_gpu_compiler_engineer/">Link to the post</a></p>
+
+<p>@dnpetrov</p>
+<ul>
+  <li>As a GPU engineer you will do a lot of optimizations, supporting new hardware
+features and fixing bugs.</li>
+  <li>Need some fundamental understanding of what the compiler actually does after it 
+dealt with the source language.</li>
+  <li>Good books on the subject: Optimizing Compilers for Modern Architectures: A
+Dependence-Based Approach by Ken Kennedy and Randy Allen</li>
+  <li>Many tuorials on YouTube that cover important topics in LLVM framework architecture.</li>
+  <li>Focus on LLVM IR.</li>
+</ul>
+
+<p>@roeschinc</p>
+<ul>
+  <li>Best way to get started is to go and work on compilers in open source or elsewhere 
+to gain experience.</li>
+</ul>
+
+<p>@sirfmaths</p>
+<ul>
+  <li>For GPU the most important part is the middle end where all the optimization such as
+vectorization, loop interchange, tiling, buffer allocation will happen</li>
+  <li>Compiler course will likely teach SSA which is essential to understand LLVM and MLIR</li>
+  <li>Most GPU compiler positions are for AI compilations.</li>
+  <li>
+    <p>Read up on ONNX.</p>
+  </li>
+  <li>
+    <p>I used to work at some of the companies you mentioned. We had a few new
+undergraduates. Don’t worry about your degree, read up on the source language,
+architectures, LLVM and C++. That is good enough to get hired as a junior.</p>
+  </li>
+  <li>
+    <p>Things that helped me break into the field: computer graphics (OpenGL, VL, DX)
+basics, CUDA and OpenCL source language, parallelism, good C++ experience, 
+knowledge of NVidia GPUs from their CUDA programming model, ability to read 
+and understand ISAs, LLVM and compiler knowledge.</p>
+  </li>
+  <li>Oh yeah, skip the courses about parsers. No one cares about parsing. Most of the
+problems will be require knowledge of the source language and IR transformations.
+Often times the front end team focuses more on optimizations or tooling</li>
+</ul>
+
+<p>@Strict_Shopping_6443</p>
+<ul>
+  <li>Recommend diving deeper into LLVM &amp; MLIR even if it’s just side projects and you 
+don’t feel ready yet to make commits to the main repos.</li>
+  <li>Look into the weekly LLVM office hours.</li>
+  <li>Check out Trito, Numba and Halide.</li>
+</ul>
+
+<p>@WittySuck</p>
+<ul>
+  <li>At the low level the main difference is that GPU compilers target a different
+instruction set.</li>
+  <li>AMD -&gt; RDNA - current most recent public spec is v3.5</li>
+  <li>NVidia -&gt; PTX/SASS - limited public docs</li>
+  <li>LLVM has backends for both of these ISAs, making it the most practical tool to use 
+for targeting the GPU.</li>
+  <li>AMD docs are superior as it provides instruction encodings.</li>
+  <li>NVidia instructions encodings have no official public docs.</li>
+  <li>LLVM CUDA backend still depends on the SDK from NVidia for machine code generation.</li>
+</ul>
+
+
+        </div>
+    </div>
+  </body>
+</html>
