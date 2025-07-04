@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Programming_concepts</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Programming_concepts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="What is a program:" />
+<meta property="og:description" content="What is a program:" />
+<link rel="canonical" href="http://localhost:4000/notes/programming_concepts/" />
+<meta property="og:url" content="http://localhost:4000/notes/programming_concepts/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-04T02:55:45+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Programming_concepts" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-04T02:55:45+01:00","datePublished":"2025-07-04T02:55:45+01:00","description":"What is a program:","headline":"Programming_concepts","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/programming_concepts/"},"url":"http://localhost:4000/notes/programming_concepts/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">Programming_concepts</h1> -->
+        <div class="container">
+            <h1 id="what-is-a-program">What is a program:</h1>
+
+<h2 id="takes-an-input---does-computation---gives-an-output">takes an input -&gt; does computation -&gt; gives an output</h2>
+
+<p><strong>Functional programming</strong> more closely follows this paradigm, but computers don’t operate like functions but a lot more like turing machines</p>
+
+<p>C -&gt; assembly with syntacting sugar around it<br />
+Haskell -&gt; High level functional language</p>
+
+<p>Languages:
+C –&gt; Haskell (fucntional spectrum)
+C –&gt; Python (ease of use spectrum)</p>
+
+<p>In the 90s people thought that OOP was going to be this revolutionary programming
+C –&gt; C++
+This did not actually improve programmer productivity</p>
+
+<p>GC (garbage collection) did</p>
+
+<p>What is a Computer:
+Processor (stream of instructions)
+RAM (Instruction + Data)</p>
+
+<p>What does a program have:<br />
+text = instructions<br />
+bss = static Data<br />
+stack = local variables (control flow)</p>
+
+<h2 id="example">example:</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">a</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">variable_on_the_stack</span><span class="p">;</span>
+    <span class="c1">// return by popping off the stack</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">b</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">a</span><span class="p">();</span> <span class="c1">// pushed the return location to the stack</span>
+
+    <span class="n">b</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>heap = malloc</p>
+
+<p>There are different directions you can go with the idea of what is programming</p>
+<ol>
+  <li>practicality (refer ot the practical_proramming file)</li>
+</ol>
+
+<h2 id="what-is-hacking">What is hacking?</h2>
+
+<p>input -&gt; system -&gt; output</p>
+
+<p>What input to the system achieves my desired output?<br />
+The system didn’t think to check what it is you are sending in<br />
+You can get the system to behave in ways that aren’t within the normal bounds of output</p>
+
+<p>This is like a function like shown below</p>
+
+<p>Pure Model:<br />
+domain -&gt; function -&gt; range<br />
+y = f(x)</p>
+
+<p>Most computation is impure, so the function can output something that is not in the range but can be entirely different</p>
+
+<p>Hacking is figuring out how to make the function behave how you want</p>
+
+<p>CTFs</p>
+
+<h2 id="high-brow-software-engineering">High brow software engineering</h2>
+
+<ol>
+  <li>Understand a complex system</li>
+  <li>Modify the system to add a feature</li>
+  <li>Ship the new system (test well and stuff)</li>
+</ol>
+
+<p>A lot of contracts and jobs like this</p>
+
+<p>do things like the CLANG for loop challenge that Goerge Hotz did to get good at this</p>
+
+<h2 id="machine-learning-engineer">Machine learning engineer</h2>
+
+<ol>
+  <li>Download a paper</li>
+  <li>Implement it</li>
+  <li>Keep doing this until you have skills</li>
+</ol>
+
+<blockquote>
+  <p>” There is no such thing as wasting time. Wasting time is great. That is the point of time, to waste it. “ 
+Goerge Hotz</p>
+</blockquote>
+
+<p>If you are learning object level skills you are learning the wrong thing. They will die out when the tools die out.<br />
+Learning meta level skills -&gt; truths about the world</p>
+
+<h2 id="build-a-knowledge-tree">Build a knowledge tree</h2>
+
+<ul>
+  <li>New information fits into the tree</li>
+  <li>Interpolation is possible when getting new information in the tree
+    <ul>
+      <li>Even if you don’t know a node of the tree you can know nodes nearby and interpolate</li>
+    </ul>
+  </li>
+  <li>Framework for understanding</li>
+</ul>
+
+<h3 id="examples">examples:</h3>
+<ul>
+  <li>Elon roots knoweledge tree in physics</li>
+  <li>Goerge roots knowldege tree in information</li>
+</ul>
+
+<p>One test to use often to ask a question oiff somebody is saying something:<br />
+say if anybody would say the opposite.<br />
+What is a good work ethic to have?<br />
+slack off, not pay attention</p>
+
+<p>meaningless question</p>
+
+<hr />
+<p>does there exist a more concise programming language?</p>
+
+<p>aka. what is the next GC?</p>
+
+<p>compilers should do more search.</p>
+
+
+        </div>
+    </div>
+  </body>
+</html>

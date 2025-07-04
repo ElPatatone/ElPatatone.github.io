@@ -46,8 +46,10 @@ div.post-date {
     /* border-style: solid; */
     /* border-color: red; */
 }
-h1, h2, h2 {
-    line-height: 1.2;
+h1, h2, h3 {
+    color: #bb9af7;
+    /* border-style: solid; */
+    /* border-color: red; */
 }
 aside {
 /*  margin-top: -20px;
@@ -128,7 +130,7 @@ a[href]:visited {
   color: #bebedf;
 }
 code.highlighter-rouge {
-  color: #fe8019;
+  color: #FFAB70;
 }
 table tr {
   border-top: 1px solid #555;
@@ -138,7 +140,7 @@ table tr:nth-child(2n) {
   background-color: #212121;
 }
 li code, p code {
-  color: #fe8019;
+  color: #FFAB70;
 }
 
 /* Stuff for posts */
