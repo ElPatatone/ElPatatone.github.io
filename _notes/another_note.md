@@ -1,5 +1,5 @@
 ---
-title: this is a test file for the thing
+name: this is a test file for the thing
 ---
 
 A banana is an edible fruit – botanically a berry – produced by several

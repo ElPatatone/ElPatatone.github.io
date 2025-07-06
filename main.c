@@ -4,11 +4,11 @@
 #include <stdint.h>   // for int32_t, etc
 #include <string.h>   // for memcpy
 #include <sys/mman.h> // for mmap
+#include <stdio.h>
 
 #include "greatest.h"
 
 // Objects
-
 typedef int64_t word;
 typedef uint64_t uword;
 
@@ -28,6 +28,10 @@ word Object_encode_integer(word value) {
   return value << kIntegerShift;
 }
 
+// NOTE: 
+
+int test = 4;
+
 // End Objects
 typedef unsigned char byte;
 
@@ -40,8 +44,7 @@ typedef struct {
   byte *address;
   BufferState state;
   size_t len;
-  size_t capacity;
-} Buffer;
+  size_t capacity; } Buffer;
 
 byte *Buffer_alloc_writable(size_t capacity) {
   byte *result = mmap(/*addr=*/NULL, /*length=*/capacity,
@@ -88,3 +91,29 @@ bool AST_is_integer(ASTNode *node) {
 word AST_get_integer(ASTNode *node) { return (word)node >> kIntegerShift; }
 
 // End AST
+word max(word left, word right) { return left > right ? left : right; }
+
+void Buffer_ensure_capacity(Buffer *buf, word additional_capacity) {
+  if (buf->len + additional_capacity <= buf->capacity) {
+    return;
+  }
+  word new_capacity =
+      max(buf->capacity * 2, buf->capacity + additional_capacity);
+  byte *address = Buffer_alloc_writable(new_capacity);
+  memcpy(address, buf->address, buf->len);
+  int result = munmap(buf->address, buf->capacity);
+  assert(result == 0 && "munmap failed");
+  buf->address = address;
+  buf->capacity = new_capacity;
+}
+
+void Buffer_write8(Buffer *buf, byte b) {
+  Buffer_ensure_capacity(buf, sizeof b);
+  Buffer_at_put8(buf, buf->len++, b);
+}
+
+void Buffer_write32(Buffer *buf, int32_t value) {
+  for (size_t i = 0; i < sizeof value; i++) {
+    Buffer_write8(buf, (value >> (i * kBitsPerByte)) & 0xff);
+  }
+}
