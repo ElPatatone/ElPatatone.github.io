@@ -12,3 +12,7 @@ For now I plan to tackle complex topics in systems engineering such as:
 - Reverse Engineering
 - Network Programming
 
+## Socials
+
+- <a href="https://github.com/ElPatatone">Github</a>
+- <a href="https://www.linkedin.com/in/Hasanur-Rahman-Mohammad/">Linkedin</a>
