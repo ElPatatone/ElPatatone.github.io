@@ -1,6 +1,7 @@
 ---
 name: Alleno-Ora
 repo: https://github.com/ElPatatone/alleno-ora
+description: A CLI tool written in C++ to manage workout information.
 ---
 
 I wanted to actually have access to my workout information without having to rely on a
