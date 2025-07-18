@@ -73,4 +73,4 @@ domains, which is why the notation differs.
 - Interesting articles to:
     - [1](https://www.danieleteti.it/post/from-markov-chains-to-modern-llms/#best-practices-and-pitfalls) 
     - [2](https://medium.com/data-science/markov-models-and-markov-chains-explained-in-real-life-probabilistic-workout-routine-65e47b5c9a73) 
-
+    - [3](https://web.stanford.edu/~jurafsky/slp3/) 
