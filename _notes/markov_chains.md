@@ -70,7 +70,7 @@ domains, which is why the notation differs.
 ### NEXT STEPS 
 - look into the evolution of markov chains, **hidden markov models(hmm)** 
 - think of a project to use markov chains. Very cool topic.
-- Interesting articles to:
+- Interesting articles to read:
     - [1](https://www.danieleteti.it/post/from-markov-chains-to-modern-llms/#best-practices-and-pitfalls) 
     - [2](https://medium.com/data-science/markov-models-and-markov-chains-explained-in-real-life-probabilistic-workout-routine-65e47b5c9a73) 
     - [3](https://web.stanford.edu/~jurafsky/slp3/) 
