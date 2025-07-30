@@ -1,5 +1,7 @@
 ---
-name: Programming Concepts
+title: Programming Concepts
+layout: note
+categories: [General]
 ---
 
 # What is a program:

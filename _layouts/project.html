@@ -2,11 +2,21 @@
 layout: default
 ---
 
-<h1 class="page-title">{{ page.title }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        {% feed_meta %}
+        {% seo %}
+    </head>
+    <body>
+        <h1 class="page-title">{{ page.title }}</h1>
 
-{{ content }}
+        {{ content }}
 
-<a href="{{page.repo}}">You can find the source code here</a>
+        <a href="{{page.repo}}">You can find the source code here</a>
+    </body>
+
 
 
 

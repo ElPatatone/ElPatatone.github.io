@@ -1,6 +1,7 @@
 ---
-name: Becoming a GPU compiler engineer
-references: https://www.reddit.com/r/Compilers/comments/1g4fnbg/becoming_a_gpu_compiler_engineer/
+title: Becoming a GPU compiler engineer
+categories: [GPU-Programming]
+layout: note
 ---
 
 [Link to the post](https://www.reddit.com/r/Compilers/comments/1g4fnbg/becoming_a_gpu_compiler_engineer/)

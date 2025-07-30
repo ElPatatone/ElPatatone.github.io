@@ -1,5 +1,7 @@
 ---
-name: Practical Programming
+title: Practical Programming
+layout: note
+categories: [General]
 ---
 
 # Programming for work:

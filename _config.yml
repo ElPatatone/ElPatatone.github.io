@@ -11,6 +11,8 @@ collections:
     output: true
   notes:
     output: true
+    permalink: /notes/:categories/:title/
+    # permalink: /notes/:title
 
 defaults:
   - scope:

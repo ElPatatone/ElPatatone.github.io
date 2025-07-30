@@ -1,6 +1,8 @@
 ---
-name: Understanding Markov Chains
+title: "Understanding Markov Chains"
+categories: [Mathematics]
 math: true
+layout: note
 ---
 
 So I was watching this [video](https://www.youtube.com/watch?v=_d3z2wVtDD8). 
