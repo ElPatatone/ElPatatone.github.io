@@ -116,6 +116,10 @@ sub {
   top: 0.4em;
 }
 
+mjx-container[jax="SVG"] {
+  font-size: 135%;  /* Adjust this to your liking */
+}
+
 body {
   color: #ffffff;
   background: #000000;
