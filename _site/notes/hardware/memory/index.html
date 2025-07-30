@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Deep dive into memory</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Deep dive into memory" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Breaking down the structure of memory The main() function starts a chain of function calls. When running the program the OS gives us a slice of the memeory in the RAM. It gives us the process memory layout:" />
+<meta property="og:description" content="Breaking down the structure of memory The main() function starts a chain of function calls. When running the program the OS gives us a slice of the memeory in the RAM. It gives us the process memory layout:" />
+<link rel="canonical" href="http://localhost:4000/notes/hardware/memory/" />
+<meta property="og:url" content="http://localhost:4000/notes/hardware/memory/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-30T21:55:16+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Deep dive into memory" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-30T21:55:16+01:00","datePublished":"2025-07-30T21:55:16+01:00","description":"Breaking down the structure of memory The main() function starts a chain of function calls. When running the program the OS gives us a slice of the memeory in the RAM. It gives us the process memory layout:","headline":"Deep dive into memory","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/hardware/memory/"},"url":"http://localhost:4000/notes/hardware/memory/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global',
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">Deep dive into memory</h1> -->
+        <div class="container">
+            <h1 class="page-title">Deep dive into memory</h1>
+<h2 id="breaking-down-the-structure-of-memory">Breaking down the structure of memory</h2>
+<p>The <code class="language-plaintext highlighter-rouge">main()</code> function starts a chain of function calls.
+When running the program the OS gives us a slice of the memeory in the RAM. 
+It gives us the <code class="language-plaintext highlighter-rouge">process memory layout</code>:</p>
+
+<p>STACK -&gt; where all the action takes place<br />
+HEAP  -&gt; memory allocated at run time/dynamically<br />
+.DATA -&gt; initializesd global and static variables<br />
+.BSS -&gt; unitialized global and static variables<br />
+.TEXT -&gt; machince code</p>
+
+<p>Creating a variable means turning bits on and off somewhere in the RAM.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">nb</span><span class="p">;</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">nb</code> is a local variable that lives in the stack, inside the <code class="language-plaintext highlighter-rouge">main()</code> function frame.
+The memory address provided to the variable is in actuality a <code class="language-plaintext highlighter-rouge">virtual address</code>.</p>
+
+<p>Whenever the program reaches a new function, it is then allocated space in the STACK.
+Each function gets a <code class="language-plaintext highlighter-rouge">stack frame</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">stack frame</code> contains the following:</p>
+<ul>
+  <li>Return address (where to go back to resume the program after the function call)</li>
+  <li>Parameters passed to the function</li>
+  <li>Local variables made in that function</li>
+  <li>Saved copies of registers (base and frame pointers)</li>
+</ul>
+
+<p>These 2 are stored in CPU registers:
+<code class="language-plaintext highlighter-rouge">stack pointer (rsp/esp)</code> points to the current top of the <code class="language-plaintext highlighter-rouge">stack frame</code>.
+<code class="language-plaintext highlighter-rouge">base pointer (rbp/ebp)</code> points to the start of the current <code class="language-plaintext highlighter-rouge">stack frame</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">STACK</code> grows downwards, meaning new frames are placed at a lower memory address.
+It grows towards the <code class="language-plaintext highlighter-rouge">HEAP</code> using the free space between the 2 of them.</p>
+
+<p>When a function returns the following happens:</p>
+<ul>
+  <li>Its frame is popped off the <code class="language-plaintext highlighter-rouge">STACK</code> and the memory is freed up</li>
+  <li><code class="language-plaintext highlighter-rouge">stack pointer</code> is adjusted</li>
+  <li><code class="language-plaintext highlighter-rouge">base pointer</code> is restored</li>
+</ul>
+
+<p>This continues until even the <code class="language-plaintext highlighter-rouge">stack frame</code> for the <code class="language-plaintext highlighter-rouge">main()</code> function is 
+removed from the <code class="language-plaintext highlighter-rouge">STACK</code> and the program ends.</p>
+
+<p>CPU registers and caches</p>
+
+
+
+        </div>
+    </div>
+  </body>
+</html>

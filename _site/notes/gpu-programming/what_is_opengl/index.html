@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>What is OpenGL?</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="What is OpenGL?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="What is OpenGL OpenGL is a series of graphics commands, functions that we can call as it is a c programming based API. It allows us to interact with the GPU, load data and render it from the GPU instead of the CPU." />
+<meta property="og:description" content="What is OpenGL OpenGL is a series of graphics commands, functions that we can call as it is a c programming based API. It allows us to interact with the GPU, load data and render it from the GPU instead of the CPU." />
+<link rel="canonical" href="http://localhost:4000/notes/gpu-programming/what_is_opengl/" />
+<meta property="og:url" content="http://localhost:4000/notes/gpu-programming/what_is_opengl/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-30T21:55:16+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="What is OpenGL?" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-30T21:55:16+01:00","datePublished":"2025-07-30T21:55:16+01:00","description":"What is OpenGL OpenGL is a series of graphics commands, functions that we can call as it is a c programming based API. It allows us to interact with the GPU, load data and render it from the GPU instead of the CPU.","headline":"What is OpenGL?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/gpu-programming/what_is_opengl/"},"url":"http://localhost:4000/notes/gpu-programming/what_is_opengl/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global',
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">What is OpenGL?</h1> -->
+        <div class="container">
+            <h1 class="page-title">What is OpenGL?</h1>
+<h2 id="what-is-opengl">What is OpenGL</h2>
+<p>OpenGL is a series of graphics commands, functions that we can call as it is a <code class="language-plaintext highlighter-rouge">c</code> 
+programming based API. It allows us to interact with the <code class="language-plaintext highlighter-rouge">GPU</code>, load data and render 
+it from the <code class="language-plaintext highlighter-rouge">GPU</code> instead of the <code class="language-plaintext highlighter-rouge">CPU</code>.</p>
+
+<p>It is a specification that represents how a graphics API should look like.</p>
+
+<h2 id="history-of-opengl">History of OpenGl</h2>
+<ol>
+  <li>In 1991 SGI starts developing OpenGL.
+    <ul>
+      <li>runs on multiple platforms (windows, linux, mac etc)</li>
+    </ul>
+  </li>
+  <li>Version 1.1 supports texturing and has a <code class="language-plaintext highlighter-rouge">Fixed Function Pipeline</code>.</li>
+  <li>Version 1.5 starts pushing OpenGL <code class="language-plaintext highlighter-rouge">Extensions (Shaders)</code>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Architecture Review Board</code> allowed companies to start sending in extensions 
+based off on their hardware.</li>
+    </ul>
+  </li>
+  <li>Version 2.1 starts enforcing a <code class="language-plaintext highlighter-rouge">programmable pipeline</code> with GLSL language.
+    <ul>
+      <li>We as programmers are able to write and execute programs on the <code class="language-plaintext highlighter-rouge">GPU</code>.</li>
+      <li>We are able to offload the work on to the <code class="language-plaintext highlighter-rouge">GPU</code> instead of only relying on the 
+<code class="language-plaintext highlighter-rouge">CPU</code>.</li>
+    </ul>
+  </li>
+  <li>Version 3.3/4.0 starts removing the old functionality
+    <ul>
+      <li>Only the <code class="language-plaintext highlighter-rouge">programmable pipeline</code> is used.</li>
+    </ul>
+  </li>
+  <li>Version 4.6 is what we use today.</li>
+</ol>
+
+<h2 id="graphics-pipeline">Graphics Pipeline</h2>
+<p>A rendering pipeline is the following:</p>
+<ul>
+  <li>The journey of a primitive(vertex, triangle, line, etc) from their 3D data to a 
+2D plane, our screen for example.</li>
+</ul>
+
+<p>How would <code class="language-plaintext highlighter-rouge">point(1.0,0.0,-5.0)</code> look like on our screen?</p>
+
+<h3 id="1-vertex-specification">1. Vertex Specification</h3>
+<p>Where we setup our vector data on the <code class="language-plaintext highlighter-rouge">CPU</code>.</p>
+
+<h3 id="2-vertex-shader">2. Vertex Shader</h3>
+<p><code class="language-plaintext highlighter-rouge">Shader</code>: programmable part of our pipeline. 
+This is a feature of modern OpenGL that we can write programs on our <code class="language-plaintext highlighter-rouge">GPU</code> to control
+the graphics pipeline.</p>
+
+<p>In the beginning we were not able to change the data being set to the <code class="language-plaintext highlighter-rouge">GPU</code>.</p>
+
+<p>It executes on each vertex, positioning that vertex.</p>
+
+<h3 id="3-tesselation-optional">3. Tesselation (optional)</h3>
+<p>The process of breaking up bigger primitives into smaller primitives to create more 
+detail in the rendering.</p>
+
+<h3 id="4-geometry-shader-optional">4. Geometry Shader (optional)</h3>
+<p>The process of generating more geometry from a given point on the <code class="language-plaintext highlighter-rouge">GPU</code>.</p>
+<ul>
+  <li>useful for particle systems</li>
+  <li>explosion effect</li>
+</ul>
+
+<h3 id="5-vertex-post-processing">5. Vertex Post-Processing</h3>
+<p>Here you can do additional post processing for the data.
+Example: you create new points in using the <code class="language-plaintext highlighter-rouge">geometry shader</code>, you can then process 
+that data right after.</p>
+
+<h3 id="6-primitive-assembly">6. Primitive Assembly</h3>
+<p>Assembling the final geometry by taking in all the data from the vertices.
+Includes other phases too:</p>
+<ul>
+  <li>clipping: clips primitives if they are outside of the specified bounds.</li>
+  <li>face culling: removes the faces of the primitive that are not necessary for the 
+              rendering.</li>
+</ul>
+
+<h3 id="7-rasterization">7. Rasterization</h3>
+<p>The process of drawing in the actual pixels based on the vertices that we have loaded 
+in so far.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">depth test</code>: deciding what to do if shapes overlap</li>
+</ul>
+
+<h3 id="8-fragment-shader">8. Fragment Shader</h3>
+<p>It executes once on each fragment -&gt; sort of like a pixel.
+Determine the final color of each of the pixels that we rasterize.</p>
+
+<h3 id="9-pre-sample-operation">9. Pre-Sample Operation</h3>
+<p>Different operations can be done here as the last step.</p>
+
+
+
+        </div>
+    </div>
+  </body>
+</html>
