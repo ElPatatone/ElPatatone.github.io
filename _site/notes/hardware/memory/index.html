@@ -13,11 +13,11 @@
 <link rel="canonical" href="http://localhost:4000/notes/hardware/memory/" />
 <meta property="og:url" content="http://localhost:4000/notes/hardware/memory/" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-08-02T14:49:32+01:00" />
+<meta property="article:published_time" content="2025-08-04T19:31:03+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Deep dive into memory" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-02T14:49:32+01:00","datePublished":"2025-08-02T14:49:32+01:00","description":"Breaking down the structure of memory The main() function starts a chain of function calls. When running the program the OS gives us a slice of the memeory in the RAM. It gives us the process memory layout:","headline":"Deep dive into memory","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/hardware/memory/"},"url":"http://localhost:4000/notes/hardware/memory/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-04T19:31:03+01:00","datePublished":"2025-08-04T19:31:03+01:00","description":"Breaking down the structure of memory The main() function starts a chain of function calls. When running the program the OS gives us a slice of the memeory in the RAM. It gives us the process memory layout:","headline":"Deep dive into memory","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/hardware/memory/"},"url":"http://localhost:4000/notes/hardware/memory/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <script>
@@ -43,12 +43,12 @@ MathJax = {
         HOME
     </a>
   
-    <a href="/projects/">
-        PROJECTS
-    </a>
-  
     <a href="/notes/">
         NOTES
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
     </a>
   
 </div>
@@ -57,9 +57,9 @@ MathJax = {
         <div class="container">
             <h1 class="page-title">Deep dive into memory</h1>
 <h2 id="breaking-down-the-structure-of-memory">Breaking down the structure of memory</h2>
-<p>The <code class="language-plaintext highlighter-rouge">main()</code> function starts a chain of function calls.
+<p>The <strong>main()</strong> function starts a chain of function calls.
 When running the program the OS gives us a slice of the memeory in the RAM. 
-It gives us the <code class="language-plaintext highlighter-rouge">process memory layout</code>:</p>
+It gives us the <strong>process memory layout</strong>:</p>
 
 <p>STACK -&gt; where all the action takes place<br />
 HEAP  -&gt; memory allocated at run time/dynamically<br />
@@ -75,13 +75,13 @@ HEAP  -&gt; memory allocated at run time/dynamically<br />
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">nb</code> is a local variable that lives in the stack, inside the <code class="language-plaintext highlighter-rouge">main()</code> function frame.
-The memory address provided to the variable is in actuality a <code class="language-plaintext highlighter-rouge">virtual address</code>.</p>
+<p><strong>nb</strong> is a local variable that lives in the stack, inside the <strong>main()</strong> function frame.
+The memory address provided to the variable is in actuality a <strong>virtual address</strong>.</p>
 
 <p>Whenever the program reaches a new function, it is then allocated space in the STACK.
-Each function gets a <code class="language-plaintext highlighter-rouge">stack frame</code>.</p>
+Each function gets a <strong>stack frame</strong>.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">stack frame</code> contains the following:</p>
+<p>The <strong>stack frame</strong> contains the following:</p>
 <ul>
   <li>Return address (where to go back to resume the program after the function call)</li>
   <li>Parameters passed to the function</li>
@@ -90,21 +90,21 @@ Each function gets a <code class="language-plaintext highlighter-rouge">stack fr
 </ul>
 
 <p>These 2 are stored in CPU registers:
-<code class="language-plaintext highlighter-rouge">stack pointer (rsp/esp)</code> points to the current top of the <code class="language-plaintext highlighter-rouge">stack frame</code>.
-<code class="language-plaintext highlighter-rouge">base pointer (rbp/ebp)</code> points to the start of the current <code class="language-plaintext highlighter-rouge">stack frame</code>.</p>
+<strong>stack pointer (rsp/esp)</strong> points to the current top of the <strong>stack frame</strong>.
+<strong>base pointer (rbp/ebp)</strong> points to the start of the current <strong>stack frame</strong>.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">STACK</code> grows downwards, meaning new frames are placed at a lower memory address.
-It grows towards the <code class="language-plaintext highlighter-rouge">HEAP</code> using the free space between the 2 of them.</p>
+<p>The <strong>STACK</strong> grows downwards, meaning new frames are placed at a lower memory address.
+It grows towards the <strong>HEAP</strong> using the free space between the 2 of them.</p>
 
 <p>When a function returns the following happens:</p>
 <ul>
-  <li>Its frame is popped off the <code class="language-plaintext highlighter-rouge">STACK</code> and the memory is freed up</li>
-  <li><code class="language-plaintext highlighter-rouge">stack pointer</code> is adjusted</li>
-  <li><code class="language-plaintext highlighter-rouge">base pointer</code> is restored</li>
+  <li>Its frame is popped off the <strong>STACK</strong> and the memory is freed up</li>
+  <li><strong>stack pointer</strong> is adjusted</li>
+  <li><strong>base pointer</strong> is restored</li>
 </ul>
 
-<p>This continues until even the <code class="language-plaintext highlighter-rouge">stack frame</code> for the <code class="language-plaintext highlighter-rouge">main()</code> function is 
-removed from the <code class="language-plaintext highlighter-rouge">STACK</code> and the program ends.</p>
+<p>This continues until even the <strong>stack frame</strong> for the <strong>main()</strong> function is 
+removed from the <strong>STACK</strong> and the program ends.</p>
 
 <p>CPU registers and caches</p>
 

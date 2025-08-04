@@ -13,11 +13,11 @@
 <link rel="canonical" href="http://localhost:4000/notes/hardware/binary/" />
 <meta property="og:url" content="http://localhost:4000/notes/hardware/binary/" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-08-02T14:49:32+01:00" />
+<meta property="article:published_time" content="2025-08-04T19:31:03+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Binary in computing" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-02T14:49:32+01:00","datePublished":"2025-08-02T14:49:32+01:00","description":"Basics of Binary","headline":"Binary in computing","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/hardware/binary/"},"url":"http://localhost:4000/notes/hardware/binary/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-04T19:31:03+01:00","datePublished":"2025-08-04T19:31:03+01:00","description":"Basics of Binary","headline":"Binary in computing","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/hardware/binary/"},"url":"http://localhost:4000/notes/hardware/binary/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <script>
@@ -43,12 +43,12 @@ MathJax = {
         HOME
     </a>
   
-    <a href="/projects/">
-        PROJECTS
-    </a>
-  
     <a href="/notes/">
         NOTES
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
     </a>
   
 </div>
@@ -61,7 +61,7 @@ MathJax = {
 <p>decimal -&gt; base 10
 binary -&gt; base 2</p>
 
-<p>binary have <code class="language-plaintext highlighter-rouge">LSB(Least Significant Bit)</code> and <code class="language-plaintext highlighter-rouge">MSB(Most Significant Bit)</code></p>
+<p>binary have <strong>LSB(Least Significant Bit)</strong> and <strong>MSB(Most Significant Bit)</strong></p>
 
 <p>negative numbers in binary can be done with 3 methods:</p>
 <ul>
@@ -71,20 +71,20 @@ binary -&gt; base 2</p>
 </ul>
 
 <h2 id="signed-magnitude">Signed Magnitude</h2>
-<p>To show the signature of a number in binary, the <code class="language-plaintext highlighter-rouge">MSB</code> is used as the <code class="language-plaintext highlighter-rouge">sign bit</code> where
-<code class="language-plaintext highlighter-rouge">0</code> is positive and <code class="language-plaintext highlighter-rouge">1</code> is negtive.</p>
+<p>To show the signature of a number in binary, the <strong>MSB</strong> is used as the <strong>sign bit</strong> where
+<strong>0</strong> is positive and <strong>1</strong> is negtive.</p>
 
-<p>The rest of the bits are called the <code class="language-plaintext highlighter-rouge">magnitude</code>.</p>
+<p>The rest of the bits are called the <strong>magnitude</strong>.</p>
 
 <p>This is the first method that was used to handle negative numbers but there are 2 
 drawbacks:</p>
 <ol>
-  <li>There are 2 versions for representing the value <code class="language-plaintext highlighter-rouge">0</code>.</li>
+  <li>There are 2 versions for representing the value <strong>0</strong>.</li>
   <li>The arithmetic is messy.</li>
 </ol>
 
 <h2 id="ones-complement">One’s Complement</h2>
-<p>The <code class="language-plaintext highlighter-rouge">sign bit</code> is still the <code class="language-plaintext highlighter-rouge">MSB</code>.</p>
+<p>The <strong>sign bit</strong> is still the <strong>MSB</strong>.</p>
 
 <p>To represent the negative representation of a number, we flip the bits.
 Example:<br />
@@ -92,16 +92,16 @@ Number 5<br />
 Positive binary = 0101<br />
 Negative binary = 1010</p>
 
-<p>If there is a carry-out from the MSB, we perform an <code class="language-plaintext highlighter-rouge">end-around carry</code>, adding the
+<p>If there is a carry-out from the MSB, we perform an <strong>end-around carry</strong>, adding the
 carry bit back into the LSB.</p>
 
-<p>This solves the issue with arithmetic operations with <code class="language-plaintext highlighter-rouge">one's complement</code> but it 
-still leaves the issue with the 2 versions of representing the value <code class="language-plaintext highlighter-rouge">0</code>.</p>
+<p>This solves the issue with arithmetic operations with <strong>one’s complement</strong> but it 
+still leaves the issue with the 2 versions of representing the value <strong>0</strong>.</p>
 
 <h2 id="twos-complement">Two’s Complement</h2>
-<p>The <code class="language-plaintext highlighter-rouge">sign bit</code> is still the <code class="language-plaintext highlighter-rouge">MSB</code>.</p>
+<p>The <strong>sign bit</strong> is still the <strong>MSB</strong>.</p>
 
-<p>To write <code class="language-plaintext highlighter-rouge">-5</code> we do the following:</p>
+<p>To write <strong>-5</strong> we do the following:</p>
 <ol>
   <li>Flip the bits -&gt; 5 = 0101 becomes 1010</li>
   <li>Add 1 to the binary number -&gt; 1010 + 1 = 1011 = -5</li>
@@ -110,7 +110,7 @@ bit, but when we finish we have to remember the sign bit of the original binary
 number and make the decimal value postive or negative based on that.</li>
 </ol>
 
-<p>We can prove that the binary <code class="language-plaintext highlighter-rouge">1011</code> is <code class="language-plaintext highlighter-rouge">-5</code> the following:</p>
+<p>We can prove that the binary <strong>1011</strong> is <strong>-5</strong> the following:</p>
 <ol>
   <li>Flip the bits again -&gt; 1011 becomes 0100</li>
   <li>Add 1 to the binary number -&gt; 0100 + 1 = 0101 = 5</li>
@@ -119,19 +119,19 @@ number and make the decimal value postive or negative based on that.</li>
 <p>If there is an extra carry after adding a negative and postive binary number we can 
 just ignore it.</p>
 
-<p>This solves the arithmetic issue completely and the <code class="language-plaintext highlighter-rouge">0</code> problem.</p>
+<p>This solves the arithmetic issue completely and the <strong>0</strong> problem.</p>
 
 <p>We only use this method if we know that the binary given is a signed value.</p>
 
 <h1 id="binary-in-computing">Binary in Computing</h1>
 
-<p>Computers use <code class="language-plaintext highlighter-rouge">8-bits</code> values which is <code class="language-plaintext highlighter-rouge">1-byte</code>.<br />
+<p>Computers use <strong>8-bits</strong> values which is <strong>1-byte</strong>.<br />
 Binary is used in several ways in computers.</p>
 
 <h2 id="instruction-encoding">Instruction Encoding</h2>
 
 <ul>
-  <li>CPU reads instruction as binary (in <code class="language-plaintext highlighter-rouge">.text</code> section).</li>
+  <li>CPU reads instruction as binary (in <strong>.text</strong> section).</li>
   <li>Instruction format varies by ISA (Instruction Set Architecture):
     <ul>
       <li>x86: variable-length (1–15 bytes)</li>
@@ -154,7 +154,7 @@ Binary is used in several ways in computers.</p>
 </ul>
 
 <h2 id="memoryram">Memory/RAM</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Memory is `byte-addressable` where each unit is `1-byte` = `8-bits`    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Memory is **byte-addressable** where each unit is **1-byte** = **8-bits**    
 - Each byte has an address associated to it
 </code></pre></div></div>
 
@@ -165,13 +165,13 @@ are being pressed and that can be seen as bits.</p>
 <h2 id="how-does-a-cpu-understand-the-instructions">How does a CPU understand the instructions?</h2>
 <p>An instruction is a binary-encoded command to the CPU that consists of:</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">opcode</code>: tells the CPU what to do</li>
-  <li><code class="language-plaintext highlighter-rouge">operands</code>: tells the CPU what to do it with</li>
+  <li><strong>opcode</strong>: tells the CPU what to do</li>
+  <li><strong>operands</strong>: tells the CPU what to do it with</li>
 </ul>
 
-<p>We use <code class="language-plaintext highlighter-rouge">decoding</code> to tell the CPU how to deal with instructions.</p>
+<p>We use <strong>decoding</strong> to tell the CPU how to deal with instructions.</p>
 
-<p>Example <code class="language-plaintext highlighter-rouge">opcodes</code>:</p>
+<p>Example <strong>opcodes</strong>:</p>
 
 <table>
   <thead>
@@ -203,8 +203,8 @@ are being pressed and that can be seen as bits.</p>
 <p>They will have different components tied together making decisions based on the 
 current being passed in.</p>
 
-<p>When the CPU reads an instruction, it extracts the <code class="language-plaintext highlighter-rouge">opcode</code> and sends it to all
-the different <code class="language-plaintext highlighter-rouge">decoders</code> (subsystems for all the instructions).</p>
+<p>When the CPU reads an instruction, it extracts the <strong>opcode</strong> and sends it to all
+the different <strong>decoders</strong> (subsystems for all the instructions).</p>
 
 <p>When the correct decoder is found then it will trigger its subsystem to carry out the 
 operation.</p>
@@ -215,16 +215,17 @@ operation.</p>
 01 = source address
 11 = destination address
 </code></pre></div></div>
-<p>Once the <code class="language-plaintext highlighter-rouge">MOVE</code> decoder receives the extracted <code class="language-plaintext highlighter-rouge">opcode</code>, it will then move the data 
-in address <code class="language-plaintext highlighter-rouge">01</code> to the address <code class="language-plaintext highlighter-rouge">11</code>.</p>
+
+<p>Once the <strong>MOVE</strong> decoder receives the extracted <strong>opcode</strong>, it will then move the data 
+in address <strong>01</strong> to the address <strong>11</strong>.</p>
 
 <p>Good to know:
-When we talk about a <code class="language-plaintext highlighter-rouge">64-bit</code> computer:</p>
+When we talk about a <strong>64-bit</strong> computer:</p>
 <ul>
   <li>how many bits are available for a single memory address.</li>
-  <li>the <code class="language-plaintext highlighter-rouge">bus width</code> which is the amount of wires connecting the different units 
+  <li>the <strong>bus width</strong> which is the amount of wires connecting the different units 
 inside a computer.</li>
-  <li>the size of <code class="language-plaintext highlighter-rouge">registers</code> (memory cells inside the CPU) the fastest memory inside
+  <li>the size of <strong>registers</strong> (memory cells inside the CPU) the fastest memory inside
 of a computer.</li>
 </ul>
 

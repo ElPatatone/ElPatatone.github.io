@@ -3,16 +3,24 @@ layout: default
 ---
 # Hello, I am Hasanur
 
-Currently I am rekindling my passion for computer science after a long period of poor 
-health.
+After a long period of poor health, I begun to reevaluate what I wanted in life. That
+reflection helped rekindle my passion for Computer Science.
 
-For now I plan to tackle complex topics in systems engineering such as:
-- GPU Programming
-- Compilers
-- Reverse Engineering
-- Network Programming
+Right now I am focused on exploring the **foundations of Computing** by peeling 
+away at abstraction layers and really understanding how things work using **first 
+principles thinking**. 
 
-## Socials
+### Areas I'm actively researching:
+- **GPU Programming**: CUDA, parallel computing, graphics pipelines, OpenGL
+- **Computer Architecture**: CPU/GPU microarchitecture, instruction pipelines, memory 
 
-- <a href="https://github.com/ElPatatone">Github</a>
-- <a href="https://www.linkedin.com/in/Hasanur-Rahman-Mohammad/">Linkedin</a>
+### You can follow my progress here:
+<!-- - [My Learning Journey](/journey/) -->
+- [Notes](/notes/)
+- [GitHub](https://github.com/ElPatatone)
+- [Linkedin](www.linkedin.com/in/hasanur-rahman-mohammad)
+
+---
+
+<!-- > *“Real understanding begins where the abstractions end.”* -->
+> *"What I cannot create, I do not understand" - Richard Feynman* 

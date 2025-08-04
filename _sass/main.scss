@@ -129,9 +129,15 @@ a[href] {
   color: #9e9eff;
   /* color: #808080; */
 }
+
+strong {
+  color: #9e9eff;
+}
+
 code.highlighter-rouge {
   /* color: #FFAB70; */
   color: #9e9eff;
+  font-size: 15px;
 }
 table tr {
   border-top: 1px solid #555;
