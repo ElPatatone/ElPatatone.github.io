@@ -11,8 +11,10 @@ away at abstraction layers and really understanding how things work using **firs
 principles thinking**. 
 
 ### Areas I'm actively researching:
-- **GPU Programming**: CUDA, parallel computing, graphics pipelines, OpenGL
-- **Computer Architecture**: CPU/GPU microarchitecture, instruction pipelines, memory 
+- **GPU Programming**
+- **Computer Architecture**
+
+You can find a more detailed breakdown of what I'm working on [here](/now/). 
 
 ### You can follow my progress here:
 - [Notes](/notes/)

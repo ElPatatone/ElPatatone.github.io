@@ -1,6 +1,7 @@
 ---
 layout: default
 title: My burnout story
+tags: [burnout, career, rediscovery]
 ---
 
 <h1 class="page-title">{{ page.title }}</h1>
@@ -99,11 +100,11 @@ A life of learning.
 Starting July 2025 my health became stable, with the only problem now being that 
 I will have ongoing issues in the form of IBS. 
 
-I begun to open the terminal again, refreshen my programming skills with C++, and just
-doing things again. I had to start slow of course, it hadn't been that long since I 
-last wrote some code but after everything that happened it all felt new to me in a
-way. I didn't completely forget how to code, but things felt stuck and I needed some
-time to get the ball rolling again.
+I begun to open the terminal again, brush up on my programming skills with C++, 
+and just doing things again. I had to start slow of course, it hadn't been that long
+since I last wrote some code but after everything that happened it all felt new to me
+in a way. I didn't completely forget how to code, but things felt stuck and I needed
+some time to get the ball rolling again.
 
 But there was a pivotal moment that I will always remember now - July 19th 2025.
 
@@ -111,7 +112,7 @@ I had a ticket booked to go to the heavyweight title fight Usyk vs. Dubois (it w
 amazing fight), and a few hours before I had to leave I started watching a [video on pointers in C](https://www.youtube.com/watch?v=MIL2BK02X8A) to jog my memory 
 (pun intended).
 
-The first time I was learning pointers during my degree, I was more focusd on the
+The first time I was learning pointers during my degree, I was more focused on the
 syntax and how to use it in the programming language, this being C. I was not focused
 on what goes under the hood at all. I was leaving that layer of abstraction be and 
 moved on with my day. 
@@ -121,7 +122,7 @@ looked for something more simple, something that abstracts away the nitty gritty
 
 But this time something was different. I stuck around.
 
-The first question the he asked in the video was:
+The first question that he asked in the video was:
 
 > **What is a Computer?** 
 
@@ -150,11 +151,13 @@ This is when I felt that the problem was finally gone.
 ## So what's next?
 
 At the time of writing this, it's been just over 2 weeks since then, and I continue 
-to research things removing abstraction layers to really understand things work 
+to research things removing abstraction layers to really understand how things work 
 from the ground up.
 
 I feel more excited than I've ever been. Every day feels new and I feel grateful
-that my world came back more colorful then ever before.
+that my world came back more colorful than ever before.
+
+---
 
 If you are interested in a more in-depth breakdown of what I am doing now check out 
-this [page](url).
+this [page](/now/).
