@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Why data location matter in GPU computing</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Why data location matter in GPU computing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Great video by the way: How GPU computing works? Stephen Jones, GTC 2021 Where is my data Nobody cares about FLOPS (Floating Point Operations per Second), or we shouldn’t really care about it." />
+<meta property="og:description" content="Great video by the way: How GPU computing works? Stephen Jones, GTC 2021 Where is my data Nobody cares about FLOPS (Floating Point Operations per Second), or we shouldn’t really care about it." />
+<link rel="canonical" href="http://localhost:4000/notes/gpu-programming/where-is-my-data/" />
+<meta property="og:url" content="http://localhost:4000/notes/gpu-programming/where-is-my-data/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-12T16:22:55+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Why data location matter in GPU computing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-12T16:22:55+01:00","datePublished":"2025-08-12T16:22:55+01:00","description":"Great video by the way: How GPU computing works? Stephen Jones, GTC 2021 Where is my data Nobody cares about FLOPS (Floating Point Operations per Second), or we shouldn’t really care about it.","headline":"Why data location matter in GPU computing","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/gpu-programming/where-is-my-data/"},"url":"http://localhost:4000/notes/gpu-programming/where-is-my-data/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global',
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/blog/">
+        BLOG
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">Why data location matter in GPU computing</h1> -->
+        <div class="container">
+            <h1 class="page-title">Why data location matter in GPU computing</h1>
+<p>Great video by the way:
+<a href="https://www.youtube.com/watch?v=3l10o0DYJXg&amp;t=64s">How GPU computing works? Stephen Jones, GTC 2021 </a></p>
+<h2 id="where-is-my-data">Where is my data</h2>
+<p>Nobody cares about <strong>FLOPS (Floating Point Operations per Second)</strong>, or we shouldn’t 
+really care about it.</p>
+
+\[\text{Compute intensity} =  \frac{\text{FLOPS}}{\text{Data Rate}}\]
+
+<p>Hardware design focuses on increasing the raw compute capacity, the peak FLOPS.
+Software design focused on maximising the utilization of hardware to actualise the 
+peak FLOPS.</p>
+
+<p><strong>NVIDIA A100</strong>:</p>
+<ul>
+  <li>peak FP64 GFLOPS: 19500</li>
+  <li>memory bandwidth (GB/sec): 1555</li>
+  <li>compute intensity (FP64): 100</li>
+</ul>
+
+<p>Every single generation we can add <strong>computing power</strong> faster than <strong>memory bandwidth</strong>. 
+[look up]<br />
+memory wall problem</p>
+
+<p>So we should really care about the <strong>memory bandwidth</strong>, <strong>latency</strong>.<br />
+Pipelining is a key concept in todays computing optimisations because the <strong>memory 
+latency</strong> is huge compated to the <strong>compute latency</strong>.</p>
+
+<h3 id="but-why-is-that">But why is that?</h3>
+<p>Physics.</p>
+<ul>
+  <li>speed of light = 300’000’000 M/s</li>
+  <li>computer clock = 3’000’000’000 Hz (3Ghz)</li>
+  <li>speed of electricity in silicon = 60’000’000 M/s</li>
+</ul>
+
+<p>In a single clock tick light travels <strong>100mm</strong>. Electricity travels <strong>20mm</strong>. 
+So based on the die size of the chip that could be 1/2 clock ticks of electricity just
+travelling from one side to the other.</p>
+
+<p>The way the <strong>transistors</strong> are pipelined also affects the speed of electricity, aka.
+the speed of loading and reading memory.</p>
+
+<p>example scenario:<br />
+Daxpy:</p>
+
+\[\alpha X+Y = Z\]
+
+<p><strong>Intel Xeon 8280</strong>:</p>
+<ul>
+  <li>memory bandwidth: 131 GB/s</li>
+  <li>memory latency: 89 ns</li>
+</ul>
+
+<p>[look up]<br />
+the roofline model</p>
+
+<p>How many bytes travel per socond:</p>
+
+\[\text {Bytes travelled} = \text{Memory Bandwidth} \times \text{Memory Latency}\]
+
+<p>You have to convert the values in seconds:</p>
+
+\[\text{Bytes travelled} = (131 \times 10^{9}) \times (89 \times 10^{-9}) = 131 \times 89 = 11659 \text{ bytes}\]
+
+<p>In the example scenario a <strong>daxpy</strong> operation moves <strong>16 bytes</strong> per <strong>89ns</strong> latency. 
+Giving us a <strong>memory efficiency</strong> of <strong>0.14%</strong>.<br />
+This happens when the program is <strong>latency bound</strong>. 
+Compilers can do <strong>loop unrolling</strong> to improve this but there are still limits to it. 
+There is a limit to how many things the hardware can stage in the pipeline before 
+it has to wait for things to come back.
+Plus we are still using 1 thread for all of these.</p>
+
+<h3 id="so-how-do-we-improve-the-performance">So how do we improve the performance?</h3>
+<p>We use parallelism.<br />
+We can use <strong>threads</strong> to issue load operations independently but in parallel. 
+Looking at the example scenario, we are able to cover up for the low <strong>memory 
+efficiency</strong> by using a GPU like the <strong>NVIDIA A100</strong>.</p>
+
+<p>The <strong>NVIDIA A100</strong> has 2 versions, the full implementation and the <strong>TensorCore</strong> 
+implementation. The lecture goes over the <strong>TensorCore</strong> version which has the 
+following specs:</p>
+<ul>
+  <li>108 SMs</li>
+  <li>64 FP32 CUDA cores/SM</li>
+  <li>4 third-generation Tensor Cores/SM</li>
+  <li>registers file size 256 KB/SM - 27MB/whole GPU</li>
+  <li>192KB L1 cache/SM - 20MB/whole GPU</li>
+  <li>40MB L2 cache/whole GPU</li>
+</ul>
+
+<p>(specs taken from <a href="https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf">A100 whitepaper</a>)</p>
+
+<h3 id="memory-in-a-gpu">Memory in a GPU</h3>
+<p>Compared to a <strong>CPU</strong> a <strong>GPU</strong> has long latency between each one of its different 
+caches. So it uses a large amount of registers in each thread to keep live data 
+around at a low latency. These registers are also used by the hardware to store data
+that has been loaded into memory for operations, so the number of registers we have 
+on a <strong>GPU</strong> directly relates to the number of memory operations we can be doing.</p>
+
+<p><strong>GPU</strong> use registers as a buffer to hide and avoid latency.</p>
+
+<p>For the <strong>NVIDIA A100</strong> it means the following:</p>
+<ul>
+  <li>27MB = 27’000’000 bytes = 3’375’000 FP64 values</li>
+</ul>
+
+<p>Why do we care so much about memory on the GPU?<br />
+Because using the <strong>PCIe</strong> to move memory is the biggest bottleneck by far. That is 
+why we try to keep the memory local.</p>
+
+<h3 id="oversubscription">Oversubscription</h3>
+<p>It has more threads/warps than it can actually use per clock cycle so that when some 
+threads are waiting because of latency, other threads have already received their 
+response and are ready to go.</p>
+
+<p>The <strong>GPU</strong> can switch from one warp to the next in a single clock cycle.</p>
+
+<p>This is how you compensate for the latency, you have more threads alive than the system
+can run at a given time.</p>
+
+<p>Opposite of what you would do on a <strong>CPU</strong>.</p>
+
+<p><strong>NVIDIA A100</strong> specs based on the <strong>CC 8.0</strong>:</p>
+<ul>
+  <li>2048 threads/SM</li>
+  <li>64 warps/SM</li>
+  <li>4 active warps/SM (4 warp schedulers, but it does not mean all 4 are running in 
+parallel)</li>
+</ul>
+
+<p>Doing these things beats latency. But we still are being limited to bandwidth. Beating
+compute intensity is all about scaling the problem.</p>
+
+<h3 id="matrix-multiplication">Matrix multiplication</h3>
+<p>This is the one algorithm that can fight the compute intensity.</p>
+
+<p>We want more <strong>FLOPS</strong> to go faster but that also means that we need bigger problems
+to work on or the memory system becomes the bottleneck.</p>
+
+<p>Data location matters a lot to tackle compute intensity.<br />
+example compute intensity for <strong>matmul</strong> operation on TF32:</p>
+<ul>
+  <li><strong>HBM</strong>: 400</li>
+  <li><strong>L2 Cache</strong>: 156</li>
+  <li><strong>L1 Cache</strong>: 32</li>
+</ul>
+
+<p>Below are the minimum sizes of a matrix to meet the demands of the compute intensity:</p>
+<ul>
+  <li><strong>HBM</strong>: 400</li>
+  <li><strong>L2 Cache</strong>: 150</li>
+  <li><strong>L1 Cache</strong>: 32</li>
+</ul>
+
+<p>So although a <strong>TF32</strong> has higher <strong>FLOPS</strong> meaning it has a higher base compute 
+intensity, we can offset this and meet those requirements by deliberately choosing 
+where we are placing the data in the memory.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<ol>
+  <li><strong>FLOPS</strong> don’t matter but <strong>memory bandwidth</strong> does because of <strong>compute
+  intensity</strong>.</li>
+  <li><strong>memory bandwidth</strong> does not really matter because <strong>memory latency</strong> is long.</li>
+  <li>To fix <strong>latency</strong> we need a lot of <strong>threads</strong> and <strong>GPUs</strong> do that.</li>
+  <li>To get high efficiency on small compute intensity pieces of work, we just have 
+be more deliberate with where the data is stored.</li>
+  <li><strong>memory latency</strong> can be beaten with <strong>threads</strong> and <strong>memory bandwidth</strong> can be 
+beaten with locality.</li>
+  <li>Then we can get all the <strong>FLOPS</strong> even from <strong>TF32</strong></li>
+  <li>The ability to max out the efficiency of all the components in the system is linked
+to where the data is located to begin with.</li>
+</ol>
+
+<p>Even if we have 5000GB/s memory bandwidth, it won’t matter if the latency is 5s due 
+to the data being stored in the HBM, if we cannot move the data closer to the 
+compute units then we will never be able to make us of all the FLOPS the GPU has.</p>
+
+
+        </div>
+    </div>
+  </body>
+</html>
