@@ -78,8 +78,8 @@ Nuclear Research). A lot of the things in the video went well above my head, but
 thing I *did* understand is **that it looks really cool.** 
 
 Suddenly I felt a spark, a surge of motivation came to me, the first time since what 
-felt like forever. I started to imagine how would I feel about working in these 
-complex domains.
+felt like forever. I started to imagine how I would feel about working in these 
+complex domains, and again, I just thought that it would be super cool.
 
 On the same day I found out about a CERN career workshop that was taking place the 
 a few days later and I immediately signed up. This was a great session, it's not that
@@ -154,7 +154,7 @@ At the time of writing this, it's been just over 2 weeks since then, and I conti
 to research things removing abstraction layers to really understand how things work 
 from the ground up.
 
-I feel more excited than I've ever been. Every day feels new and I feel grateful
+I am more excited than I've ever been. Every day feels new and I feel grateful
 that my world came back more colorful than ever before.
 
 ---
