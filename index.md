@@ -6,16 +6,19 @@ layout: default
 After a long period of poor health, I begun to reevaluate what I wanted in life. That
 reflection led to the reigniting of my passion for Computer Science.
 
-Right now I am focused on exploring the **foundations of Computing** by peeling 
-away at abstraction layers and really understanding how things work using **first 
-principles thinking**. 
+Right now I am focused on exploring the **foundations of Computing** from the silicon
+up. I am focused on **GPU architecuture and computing**, as well **computer 
+architecture** more broadly, peeling away abstraction layers to understand how 
+systems work at a foundational level.
 
-### Areas I'm actively researching:
-- **GPU Computing**
-- **Computer Architecture**
+**GOAL**: To work at the forefront of computing technology, driving innovation in GPUs
+and next generation architectures.
+<!-- ### Areas I'm actively researching: -->
+<!-- - **GPU Architecture & Computing** -->
+<!-- - **Computer Architecture** -->
 
-👉Curious about what I am working on in detail?  
-Check out my [notes](/notes/) or see what I am focused on [here](/now/). 
+Curious to see what I am working on in more detail?  
+Check out my [notes](/notes/) or see what I am actively working on [here](/now/). 
 
 ### You can follow my progress here:
 - [GitHub](https://github.com/ElPatatone)

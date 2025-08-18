@@ -6,31 +6,34 @@ last-modified: 05/08/2025
 
 # {{page.title}}
 
-Right now I am focused on 2 main topics:
-- **GPU Computing**: CUDA, parallel computing, graphics pipelines, OpenGL
-- **Computer Architecture**: CPU/GPU microarchitecture, ISA 
+Right now I am focused on two main topics: 
 
 ## GPU Computing
 
-I first got interested in **GPU Programming** in the area of graphics back in 2024,
-but I did not actually end up exploring the topic back then.
+I first got interested in **GPUs** when I was building my first PC, I remember
+seeing the name **NVIDIA** for the first time back then and buying an **RTX 2060**
+with the only goal being running games at high quality.  
 
-Now I am actively researching things using the following resources:
-- **PMPP (Programming Massively Parallel Processors)** - book
+Now, I am researching anything GPU, from GPU microarchitecture to programming on GPUs
+using CUDA. I am following several resources but I reccommend these to get started:
+- **PMPP (Programming Massively Parallel Processors)** - book/video lectures
+- **NVIDIA whitepapers** - great to break down the microarchitecture and design 
+                           decisions for different chips
+- **CUDA programming guide** - official NVIDIA docs 
 - **CUDA by Example** - book
-- **learningopengl.com** - website
 
 ## Computer Architecture
 
-This is a more recent passion, after hiding behind abstraction layers I have decided
-to remove them and truly understand things. I am interested in a career in the domain
-of computer architecture and currently I am using the following resources to kickstart
-that process:
+You can't really understand GPUs without understanding the underlying architecture 
+behind them. So I am going to explore the foundations of computing from the silicon
+upwards. I am using the following resources to guide me:
 - **Digital Design and Computer Architecture** - course by Onur Mutlu available on 
 [youtube](https://www.youtube.com/watch?v=ubhxKNlOlRg&list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3) 
 - **Computer Architecture: A Quantitative Approach** - book 
 
 ---
+
+You can follow my progress and detailed notes on these topics on the [notes page](/notes/) 
 
 ***Last modified: {{page.last-modified}}*** 
 
