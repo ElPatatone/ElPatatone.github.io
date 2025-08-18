@@ -11,7 +11,7 @@ collections:
     output: true
   notes:
     output: true
-    permalink: /notes/:categories/:title/
+    permalink: /notes/:categories/:slug/
     # permalink: /notes/:title
 
 defaults:

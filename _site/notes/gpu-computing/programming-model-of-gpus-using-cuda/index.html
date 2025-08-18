@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Programming model of GPUs using CUDA</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Programming model of GPUs using CUDA" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Types of Parallelism Task Parallelism: different operations performed on the same or different data Example: text editor that has spellchecker on top. Different operations done at the same time on the same data. usually has a modest number of tasks unleashing a modest amount of parallelism because in one application how many differnt type of operations would you run at the same time" />
+<meta property="og:description" content="Types of Parallelism Task Parallelism: different operations performed on the same or different data Example: text editor that has spellchecker on top. Different operations done at the same time on the same data. usually has a modest number of tasks unleashing a modest amount of parallelism because in one application how many differnt type of operations would you run at the same time" />
+<link rel="canonical" href="http://localhost:4000/notes/gpu-computing/programming-model-of-gpus-using-cuda/" />
+<meta property="og:url" content="http://localhost:4000/notes/gpu-computing/programming-model-of-gpus-using-cuda/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-18T16:33:16+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Programming model of GPUs using CUDA" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-18T16:33:16+01:00","datePublished":"2025-08-18T16:33:16+01:00","description":"Types of Parallelism Task Parallelism: different operations performed on the same or different data Example: text editor that has spellchecker on top. Different operations done at the same time on the same data. usually has a modest number of tasks unleashing a modest amount of parallelism because in one application how many differnt type of operations would you run at the same time","headline":"Programming model of GPUs using CUDA","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/gpu-computing/programming-model-of-gpus-using-cuda/"},"url":"http://localhost:4000/notes/gpu-computing/programming-model-of-gpus-using-cuda/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global',
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/blog/">
+        BLOG
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">Programming model of GPUs using CUDA</h1> -->
+        <div class="container">
+            <h1 class="page-title">Programming model of GPUs using CUDA</h1>
+<h2 id="types-of-parallelism">Types of Parallelism</h2>
+<p><strong>Task Parallelism</strong>: different operations performed on the same or different data</p>
+<ul>
+  <li>Example: text editor that has spellchecker on top. Different operations done at the 
+same time on the same data.</li>
+  <li>usually has a modest number of tasks unleashing a modest amount of parallelism
+    <ul>
+      <li>because in one application how many differnt type of operations would you run 
+at the same time</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Data Parallelism</strong>: same operations performed on different data</p>
+<ul>
+  <li>Example: a screen where we render different pixels, same operations but different 
+data used.</li>
+  <li>potentially massive amounts of data unleashing massive amounts of parallelism
+    <ul>
+      <li>taking the same program and running it on a larger dataset, like rendering 
+an image on a higher resolution screen</li>
+      <li>most suitable for <strong>GPUs</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="system-organization">System Organization</h2>
+<p><strong>CPU</strong>: host 
+<strong>RAM (main memory)</strong>: host memory</p>
+
+<p><strong>GPU</strong>: device 
+<strong>(device memory)</strong>: global memory</p>
+
+<p>The CPU and the GPU have seperate memories and cannot access each others memories<br />
+We can use <strong>PCie</strong> to transfer the data across the two, another way which is specific
+to Nvidia is <strong>Nvlink</strong>.</p>
+
+<p>Steps:</p>
+<ol>
+  <li>allocate GPU memory</li>
+  <li>copy data from CPU memory to GPU memory</li>
+  <li>perform computation on GPU</li>
+  <li>copy data from GPU memory to CPU memory</li>
+  <li>deallocate GPU memory</li>
+</ol>
+
+<h2 id="vector-addition">Vector addition</h2>
+<p>sequential code:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arraySize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>To make this operation faster on the GPU, we can assign a <strong>thread</strong> per vector 
+element so we can run all the computation in parallel instead of sequentially.</p>
+
+<p><strong>grid</strong> is an array of <strong>threads</strong><br />
+<strong>block</strong> is a group of <strong>threads</strong> inside a <strong>grid</strong></p>
+
+<p>[look up] threads in the same block can collaborate in ways that threads in different
+          blocks cannot</p>
+
+<h2 id="launch-a-grid">Launch a grid</h2>
+<ul>
+  <li>threads in the same grid execute the same function known as a <strong>kernel</strong></li>
+  <li>grid can be launched by calling a kernel and configuring it with appropriate 
+block and grid sizes</li>
+</ul>
+
+<p>[look up] Current maximum number of threads per block in modern GPUs is
+<strong>1024</strong></p>
+
+<p>keywords:
+<strong>gridDim.x</strong>: number of blocks in the grid 
+<strong>blockIdx.x</strong>: position of blocks in the grid along the x-axis 
+<strong>blockDim.x</strong>: number of threads in the block 
+<strong>threadIdx.x</strong>: position of the thread in the block along the x-axis</p>
+
+<p>To find the global index of a thread based on all the threads in the grid<br />
+you do the following:
+<strong>blockDim.x * blockIdx.x + threadIdx.x</strong></p>
+
+<p>This is very important to remember.</p>
+
+<p>In the case of vector additions, we need to find the global index of a thread 
+because we want to assign each thread to an element of the vector by matching their 
+index.</p>
+
+<h2 id="compilation-with-nvcc">Compilation with NVCC</h2>
+<p>Splits the code into 2 parts.
+C/C++ compilation:</p>
+<ol>
+  <li>host C/C++ code is passed into the host C/C++ compiler</li>
+  <li>host assembly is generated
+    <ul>
+      <li>host assembly (e.g x86, ARM)</li>
+    </ul>
+  </li>
+  <li>device assembly is run on the CPU</li>
+</ol>
+
+<p>CUDA compilation:</p>
+<ol>
+  <li>CUDA code is compiled into <strong>.ptx</strong> a virtual <strong>ISA</strong></li>
+  <li>device <strong>Just-in-Time compiler</strong> takes the <strong>.ptx</strong> and compiles it to device assembly
+    <ul>
+      <li>happens when we run the program, <strong>runtime</strong></li>
+      <li>device assembly (e.g SASS)</li>
+    </ul>
+  </li>
+  <li>device assembly is run on the GPU</li>
+</ol>
+
+<p>When we have a call to the kernel the CPU will call the device assembly code to 
+run on the GPU.</p>
+
+<p>kernels are <strong>asynchronous</strong></p>
+
+<h2 id="what-is-cuda">What is CUDA?</h2>
+<p>The way graphics works is very similar to the way other domains works but with 
+different emphasis. 
+CUDA started with supercomputing but now it is heavily used in 
+the AI world as well.</p>
+
+<p>CUDA is written in C, started out as a language in a compiler. It is now much more 
+than just a language, it has a lot of different things going on.</p>
+
+<p>It is essentially an abstraction, a python function that does image processing runs 
+CUDA in the background</p>
+
+<p>CUDA sees the CPU and the GPU as one -&gt; heterogeneous computing (using more than one
+type of processor, CPU and GPU)</p>
+
+<p>example program:</p>
+<ol>
+  <li>Load the config file in the CPU</li>
+  <li>Fetch an API from the interntet on the CPU</li>
+  <li>Do some image processing on the GPU</li>
+</ol>
+
+<p>We as the programmer are able to tell CUDA where the instructions go, it will look 
+like one program on the surface.</p>
+
+<p>CUDA allows communication between the CPU and GPU using the PCIE buses. 
+But there is something called confidential computing from Nvidia where there is a 
+fully encrypted channel that encrypt the communication on the PCIE buses.</p>
+
+<p>CUDA is like an interpreter as it takes in the commands that you give it and it turns 
+them into the command streams that the hardware needs to control it.</p>
+
+<p>Originally GPUs were made to push pixels onto a screen.
+There are these deep pipelines for graphical processing, but it turns out that
+pipelines for pixers are the same as pipelines for matrix operations for AI and other 
+things.</p>
+
+<ol>
+  <li>compilers create the binary files</li>
+  <li>runtimes that control the hardware to dispatch the binary to them</li>
+  <li>assembly language to actually run the program</li>
+</ol>
+
+<p>CUDA can take in many different types of software and it interacts with different type
+of hardware.</p>
+
+<p>It then it makes the software think there is only one type of hardware and the makes
+the hardware think there is only one type of software.</p>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=iE-xGWBQtH0&amp;list=PLRRuQYjFhpmubuwx-w8X964ofVkW1T8O4&amp;index=2">PMPP lecture 2</a></li>
+  <li><a href="https://www.youtube.com/watch?v=K9anz4aB0S0&amp;t=169s">What is CUDA - computerphile</a></li>
+</ul>
+
+
+        </div>
+    </div>
+  </body>
+</html>

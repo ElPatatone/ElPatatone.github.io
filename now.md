@@ -7,10 +7,10 @@ last-modified: 05/08/2025
 # {{page.title}}
 
 Right now I am focused on 2 main topics:
-- **GPU Programming**: CUDA, parallel computing, graphics pipelines, OpenGL
+- **GPU Computing**: CUDA, parallel computing, graphics pipelines, OpenGL
 - **Computer Architecture**: CPU/GPU microarchitecture, ISA 
 
-## GPU Programming
+## GPU Computing
 
 I first got interested in **GPU Programming** in the area of graphics back in 2024,
 but I did not actually end up exploring the topic back then.

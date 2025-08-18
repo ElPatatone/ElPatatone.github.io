@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Looking at logic gates</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Looking at logic gates" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Latency transistors in series are slower than ones in parallel because there is more resistence on the wire." />
+<meta property="og:description" content="Latency transistors in series are slower than ones in parallel because there is more resistence on the wire." />
+<link rel="canonical" href="http://localhost:4000/notes/hardware/looking-at-logic-gates/" />
+<meta property="og:url" content="http://localhost:4000/notes/hardware/looking-at-logic-gates/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-18T16:33:16+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Looking at logic gates" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-18T16:33:16+01:00","datePublished":"2025-08-18T16:33:16+01:00","description":"Latency transistors in series are slower than ones in parallel because there is more resistence on the wire.","headline":"Looking at logic gates","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/hardware/looking-at-logic-gates/"},"url":"http://localhost:4000/notes/hardware/looking-at-logic-gates/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global',
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/blog/">
+        BLOG
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">Looking at logic gates</h1> -->
+        <div class="container">
+            <h1 class="page-title">Looking at logic gates</h1>
+<h2 id="latency">Latency</h2>
+<p><strong>transistors</strong> in series are slower than ones in parallel because there is more 
+resistence on the wire.</p>
+
+<p>[look up]<br />
+1.7.8 of H&amp;H
+psuedo-nMOS logic</p>
+
+<h2 id="power-consumption">Power Consumption</h2>
+<p><strong>Dynamic Power Consumption</strong> is the power used to charge <strong>capacitance</strong> as signals
+change, 0 to 1.</p>
+
+<p><strong>capacitance</strong> is a measure of how much electric charge can be stored per volt across
+2 conductors seperated by an insulator.
+[look up]
+look more into the capacitance and electrical side of things</p>
+
+<p>C*V**2 * f</p>
+
+<ul>
+  <li>C = capacitance of the circuit (wires and gates)</li>
+  <li>V = supply voltage</li>
+  <li>f = charging frequency of the capacitor</li>
+</ul>
+
+<p>When increasing <strong>f</strong> we want to also increase <strong>V</strong> to achieve the oputput for <strong>f</strong>.
+Voltage has a cubical affect on power.</p>
+
+<p><strong>Static Power Consumption</strong> is the power consumed when the circuit is idle.
+V * I leakage</p>
+
+<p><strong>energy consumption</strong> is</p>
+
+<p>power * time</p>
+
+<p>need to include both dynamic and static power</p>
+
+<h3 id="larger-gates">Larger gates</h3>
+<p>We can extend gates to more than 2 inputs but this leads to increased latency. It 
+would be better to just seperate the larger gate into smaller gates and combine the 
+output.</p>
+
+<h2 id="how-do-we-keep-moores-law">How do we keep Moore’s Law?</h2>
+<ol>
+  <li>manufacturing smaller transistors/structures
+    <ul>
+      <li>some structures are already a few atoms in size</li>
+    </ul>
+  </li>
+  <li>using materials with better properties
+    <ul>
+      <li>copper instead of aluminium (better conductor)</li>
+      <li>hafnium oxide, air for insulators</li>
+      <li>making sure all materials are compatible is the challenge</li>
+    </ul>
+  </li>
+  <li>enable precision manufacturing
+    <ul>
+      <li>extreme ultraviolet (UEV) light to pattern &lt;10nm structures</li>
+    </ul>
+  </li>
+  <li>creating new device technologies
+    <ul>
+      <li>FinFET, gate all around transistro, single electron transistor</li>
+    </ul>
+  </li>
+</ol>
+
+<p>[look up]</p>
+<ul>
+  <li>microelectronic design</li>
+  <li>precision manufacturing</li>
+  <li>fabrication technologies</li>
+  <li>IEDM</li>
+  <li>extreme ultraviolet litography</li>
+  <li>Moores law paper</li>
+</ul>
+
+<p><strong>Innovation at the bottom enables computing.</strong></p>
+
+<h3 id="how-do-we-make-a-logic-circuit">How do we make a logic circuit?</h3>
+<p>A logic circuit is composed of:</p>
+<ul>
+  <li>inputs</li>
+  <li>ouputs</li>
+  <li>specifications</li>
+</ul>
+
+<p><strong>Functional specification</strong> describes relationship between inputs and outputs 
+<strong>Timing specification</strong> describes the delay between inputs changing and outputs 
+responding</p>
+
+<h3 id="types-of-a-logic-circuit">Types of a logic circuit</h3>
+<p><strong>combinational logic</strong>:</p>
+<ul>
+  <li>memoryless (we don’t remember what we have done with the inputs to make the outputs)</li>
+  <li>outputs are strictly dependant on the combination of input values that are being 
+applied to the circuit right now</li>
+</ul>
+
+<p><strong>sequential logic</strong>:</p>
+<ul>
+  <li>has memory</li>
+  <li>outputs are determined by previous and current value of inputs</li>
+</ul>
+
+<h2 id="boolean-algebra">Boolean Algebra</h2>
+<p>Boolean algebra is important because if we were to implement a circuit for a very 
+complex boolean formula, the resulting circuit could be extremely expensive. 
+Instead we can simplify the boolean formula, thus reducing the circuits complexity as 
+well.</p>
+
+<p>[look up]<br />
+axioms + proofs
+george boole - the mathematical analysis of logic
+go explore boolean algebra</p>
+
+<p><strong>duality</strong> in boolean algebra means that every axiom opposite form is true as well.</p>
+
+<p>[look up]<br />
+logic/hardware synthesis course - simplify circuits
+<strong>DeMorgans law</strong>: enabling transformation</p>
+
+<h3 id="why-care-about-boolean-algebra">Why care about Boolean Algebra?</h3>
+<ul>
+  <li>It helps us represent the function of a combinational logic block</li>
+  <li>transform the function into simpler functions
+    <ul>
+      <li>leads to different hardware realizations</li>
+      <li>logic minimization or logic simplification</li>
+      <li>we can automate the process with computer aided design or electronic design 
+automation</li>
+    </ul>
+  </li>
+  <li>different boolean expressions lead to different logic gate implementations
+    <ul>
+      <li>different hardware, cost, latency, energy properties</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="standardized-function-representations">Standardized function representations</h3>
+<p>A universally agreed way of representing these boolean functions.</p>
+
+<p><strong>Sum of Products (SOP)</strong><br />
+SUM(OR) of all products (minterms) that cause output to be 1.</p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>AND = product</td>
+          <td>OR = sum</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>create a truth table for the inputs</li>
+  <li>find all the input combinations (minterms) where the output is TRUE</li>
+  <li>the function is 1 if any of the input combinations is 1, we do not care for the rest</li>
+</ul>
+
+<p>If 0 then complement the variable<br />
+if 1 then keep as is</p>
+
+<p>We can shorten this by enumerating each row with the decimal value of the binary 
+number made with the inputs.
+This way we do not need the truth table and instead can create an expression that 
+represents it.</p>
+
+<p>But then we always have to get the minimal form for the canonical form of the 
+boolean expression.</p>
+
+<p><strong>Product of Sums (POS)</strong></p>
+<ul>
+  <li>find all the input combinations where the output is FALSE</li>
+  <li>the function is 0 if any of the input combinations is 0, we do not care for the rest</li>
+</ul>
+
+<p>If 1 then complement the variable<br />
+if 0 then keep as is</p>
+
+<h2 id="combinational-logic">Combinational logic</h2>
+<ul>
+  <li>It is often grouped into larger building blocks to build more complex systems</li>
+  <li>hides the unnecessary gate level details to emphasise the function of the building 
+block, creates abstraction for easier building.</li>
+</ul>
+
+<h3 id="decoder">Decoder</h3>
+<ul>
+  <li>input pattern detector</li>
+  <li>n inputs and 2^n outputs</li>
+  <li>exactly one of the outputs is 1 and all the rest are 0 - one hot encoding</li>
+  <li>used in memory, instruction decoding, I/O selection
+Example 2:4 decoder</li>
+</ul>
+
+<h3 id="multiplexer-mux">Multiplexer (MUX)</h3>
+<ul>
+  <li>selects one of the n inputs to connect it to the output
+Example 2-to-1 MUX has 2 data inputs and 1 select input. <br />
+If select input is 0 then selects D0, if select input is 1 then selects D1</li>
+  <li>can be used as look up tables to perform logic functions</li>
+</ul>
+
+<p><strong>Programmable logic array (PLA)</strong> enables the 2 level SOP implementation of any 
+N-input M-output function.</p>
+
+<p>[look up]<br />
+ripple carry adder<br />
+lookahead adder</p>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=U-4jmbm8inw&amp;list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3&amp;index=2">DDCA lecture 2</a></li>
+</ul>
+
+
+        </div>
+    </div>
+  </body>
+</html>

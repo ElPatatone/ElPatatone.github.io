@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GPU execution model</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="GPU execution model" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="GPU Architecture A GPU has multiple streaming multiprocessors (SMs) and each one of those consists of multiple cores with shared control and memory. They all then have access to global memory." />
+<meta property="og:description" content="GPU Architecture A GPU has multiple streaming multiprocessors (SMs) and each one of those consists of multiple cores with shared control and memory. They all then have access to global memory." />
+<link rel="canonical" href="http://localhost:4000/notes/gpu-computing/gpu-execution-model/" />
+<meta property="og:url" content="http://localhost:4000/notes/gpu-computing/gpu-execution-model/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-18T16:33:16+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GPU execution model" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-18T16:33:16+01:00","datePublished":"2025-08-18T16:33:16+01:00","description":"GPU Architecture A GPU has multiple streaming multiprocessors (SMs) and each one of those consists of multiple cores with shared control and memory. They all then have access to global memory.","headline":"GPU execution model","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/gpu-computing/gpu-execution-model/"},"url":"http://localhost:4000/notes/gpu-computing/gpu-execution-model/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global',
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/blog/">
+        BLOG
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">GPU execution model</h1> -->
+        <div class="container">
+            <h1 class="page-title">GPU execution model</h1>
+<h2 id="gpu-architecture">GPU Architecture</h2>
+<p>A <strong>GPU</strong> has multiple <strong>streaming multiprocessors (SMs)</strong> and each one of those 
+consists of multiple <strong>cores</strong> with shared <strong>control</strong> and <strong>memory</strong>. <br />
+They all then have access to <strong>global memory</strong>.</p>
+
+<p>The <strong>SMs</strong> can only accomodate a limited number of <strong>threads</strong> at once as they 
+in turn need resources to execute their tasks. In the case where the <strong>grid</strong> 
+launched has more <strong>threads</strong> than the whole <strong>GPU</strong> can run at once, then the 
+remaining <strong>threads</strong> wait for other <strong>threads</strong> to finish before they start running.</p>
+
+<h3 id="synchronization">Synchronization</h3>
+<p><strong>threads</strong> in the same <strong>block</strong>, <strong>SM</strong>, can work together in certain ways.</p>
+<ul>
+  <li><strong>barrier synchronization</strong>: <code class="language-plaintext highlighter-rouge">__syncthreads()</code> waits for all threads in the block 
+to reach a certain point in the code before any thread can continue.</li>
+  <li><strong>shared memory</strong>: access fast memory that only threads in the same block can access</li>
+  <li>threads in different blocks do not work with each other, each block is independent
+from each other
+    <ul>
+      <li>enables <strong>transparent scalability</strong>, the same code can be run on different 
+devices with different hardware specs
+        <ul>
+          <li>one machine with few SMs can run blocks sequentially</li>
+          <li>another machine with more SMs can run blocks in parallel</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>there is no context switching at the block level, the block is executed until all
+the threads inside of it are done and only then is a new block brought into the SM 
+to run its own threads</li>
+</ul>
+
+<h3 id="thread-scheduling">Thread Scheduling</h3>
+<p>Threads assigned to an SM run concurrently, there is a scheduler that manages their 
+execution.<br />
+They are then divided further into <strong>warps</strong> which are the unit of scheduling, groups
+of 32 threads.</p>
+
+<p><strong>SIMD</strong> has a disadvantage, different threads take different control paths, resulting
+in <strong>control divergence</strong>. When a point is reached where the threads need to branch
+in their control paths, instead of having the threads that are not taking that branch
+moving on and going in their own path, all of the threads will travel together.
+If one thread is not taking branch 1 it will still go to that branch and be inactive
+and then once the threads at branch 1 are done they will all go to branch 2.</p>
+
+<p>The percentage of threads that are active during SIMD is called <strong>SIMD efficiency</strong>.</p>
+
+<h3 id="latency-hiding">Latency Hiding</h3>
+<p>When a warp is waiting for a high latency operation, another warp can be scheduled 
+for execution.</p>
+
+<p><strong>occupancy</strong>: ratio of threads active on the SM compared to the maximum allowed.</p>
+<ul>
+  <li>generally maximising this ratio is the goal to improve latency hiding</li>
+  <li>choosing the correct block size</li>
+</ul>
+
+<p>I look at this concept in more detail <a href="/notes/gpu-computing/why-data-location-matters-in-gpu-computing/">here</a></p>
+
+<blockquote>
+  <p>If you want your processors to have low latency then you optimize how long
+operations take, but if you want your processors to have high throughput then you want
+to have more cores and will tolerate the higher latency.</p>
+</blockquote>
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=pBQJAwogMoE&amp;list=PLRRuQYjFhpmubuwx-w8X964ofVkW1T8O4&amp;index=4">PMPP lecture 4</a></li>
+</ul>
+
+
+        </div>
+    </div>
+  </body>
+</html>

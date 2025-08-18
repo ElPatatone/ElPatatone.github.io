@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introduction to computer architecture</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Introduction to computer architecture" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Levels of Abstraction" />
+<meta property="og:description" content="Levels of Abstraction" />
+<link rel="canonical" href="http://localhost:4000/notes/hardware/introduction-to-computer-architecture/" />
+<meta property="og:url" content="http://localhost:4000/notes/hardware/introduction-to-computer-architecture/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-18T16:33:16+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introduction to computer architecture" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-08-18T16:33:16+01:00","datePublished":"2025-08-18T16:33:16+01:00","description":"Levels of Abstraction","headline":"Introduction to computer architecture","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notes/hardware/introduction-to-computer-architecture/"},"url":"http://localhost:4000/notes/hardware/introduction-to-computer-architecture/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global',
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+  </head>
+  <body>
+    <div class="pagecontents">
+        <div class="navbar">
+  
+    <a href="/">
+        HOME
+    </a>
+  
+    <a href="/blog/">
+        BLOG
+    </a>
+  
+    <a href="/projects/">
+        PROJECTS
+    </a>
+  
+    <a href="/notes/">
+        NOTES
+    </a>
+  
+</div>
+
+        <!-- <h1 class="page-title">Introduction to computer architecture</h1> -->
+        <div class="container">
+            <h1 class="page-title">Introduction to computer architecture</h1>
+<h2 id="levels-of-abstraction">Levels of Abstraction</h2>
+
+<ul>
+  <li>Problem</li>
+  <li>Algorithm</li>
+  <li>Program/Language</li>
+  <li>System Software (VM, OS, MM)</li>
+  <li>ISA (architecture): interface between the software and hardware</li>
+  <li>Mircroarchitecture: implementation of the ISA</li>
+  <li>Logic: digital logic circuits</li>
+  <li>Devices</li>
+  <li>Electrons</li>
+</ul>
+
+<p>It is difficult to change the <strong>ISA</strong> as a lot of software is built on top of it, 
+<strong>mircroarchitecture</strong> is easier to change.</p>
+
+<p>Different platforms can achieve different goals:</p>
+<ul>
+  <li>TPU: machine learning focused workflows</li>
+  <li>CPU: general computing</li>
+  <li>GPU: parallel computing</li>
+</ul>
+
+<p>But there is also a focus on the software used on these platforms to optimize things.
+We should work on every part of the system.</p>
+
+<h3 id="what-is-computer-architecture">What is Computer Architecture?</h3>
+<p>It is the science and art of designing, selecting and interconnecting hardware 
+components and designing the hardware/software interfaces to create a computing 
+system that meets our goals.</p>
+
+<p><strong>Enable better systems</strong>: make computers faster, cheaper, smaller, more realiable
+<strong>Enable new applications</strong>: self-driving cars can only happen on modern hardware</p>
+
+<p>We have been using databases for decades and they are getting bigger each year. Scaling
+them is hard to do if we do not have better systems to manage the bigger workload.</p>
+
+<p>Richard Feynman said: “There’s plenty of room at the bottom”</p>
+
+<p>Meaning we should focus on the underlying technology and the foundations.</p>
+
+<h2 id="transistors">Transistors</h2>
+<p>They are the building blocks of computers.</p>
+<ul>
+  <li><strong>Intel 4004</strong> in 1971 had <strong>2300 MOS transistors</strong></li>
+  <li><strong>Intel Pentium IV</strong> in 2000 had <strong>42 Million MOS transistors</strong></li>
+  <li><strong>Apple M2 Max</strong> in 2022 had <strong>67 Billion MOS transistors</strong></li>
+</ul>
+
+<h2 id="mos-transistors">MOS Transistors</h2>
+<p>made with combining:</p>
+<ul>
+  <li><strong>Metal</strong> - conductors</li>
+  <li><strong>Oxide</strong> - insulators</li>
+  <li><strong>Semiconductors</strong></li>
+</ul>
+
+<p>Combine many of them and we get simple logic gates.</p>
+
+<p>[look up]
+electrical properties of metal-oxide semiconductors
+Sections 1.6/1.7 of H &amp; H</p>
+
+<p>Example:</p>
+<ul>
+  <li>for a lamp to glow electrons must flow</li>
+  <li>for electrons to flow there must be a closed circuit from the power supply to the 
+lamp and back to the power supply</li>
+  <li>the lamp can be turned on and off by using the wall switch to make or break the 
+closed circuit</li>
+</ul>
+
+<p>There are 2 types of <strong>MOS transistors</strong>:</p>
+
+<p><strong>n-type</strong>: if the gate of the transistor is supplied with high enough voltage, 
+the connection from the source to drain acts like a wire, the circuit is closed.</p>
+
+<p><strong>p-type</strong>: uses the same structure as a <strong>n-type</strong> transistor but the logic is 
+inverted. If there is no voltage being passed in then the circuit is closed.</p>
+
+<p>Small volts are good for low energy, ideally people want to reduce the voltage to 
+not waste energy.
+However the issue is that with small voltages the noise margin is smaller. Trying 
+to distinguish between <strong>0V and 0.3V</strong> is much harder than <strong>0V and 3V</strong>. <br />
+Reducing the voltage makes things less reliable.</p>
+
+<h2 id="logic-gates">Logic gates</h2>
+<p><strong>Logic gates</strong> implement simple boolean functions</p>
+
+<p>[look up]
+george boole paper</p>
+
+<p>Modern computers use both the <strong>n-type</strong> and <strong>p-type</strong> transistors.
+Complementary MOS, CMOS</p>
+
+<p><strong>PMOS</strong> transistors are good at pulling up the output. 
+<strong>NMOS</strong> transistors are good at pulling down the output.</p>
+
+<h3 id="cmos-not-gate">CMOS NOT Gate</h3>
+<ul>
+  <li>if A = 0V then Y = 3V -&gt; 1</li>
+  <li>if A = 3V then Y = 0V -&gt; 0</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>PMOS</th>
+      <th>NMOS</th>
+      <th>Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>ON</td>
+      <td>OFF</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>OFF</td>
+      <td>ON</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This can be summarised with the following:</p>
+
+\[Y = \overline{A}\]
+
+<h3 id="cmos-nand-gate">CMOS NAND Gate</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>P1</th>
+      <th>P2</th>
+      <th>N1</th>
+      <th>N2</th>
+      <th>Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td>ON</td>
+      <td>ON</td>
+      <td>OFF</td>
+      <td>OFF</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>ON</td>
+      <td>OFF</td>
+      <td>OFF</td>
+      <td>ON</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>OFF</td>
+      <td>ON</td>
+      <td>ON</td>
+      <td>OFF</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>OFF</td>
+      <td>OFF</td>
+      <td>ON</td>
+      <td>ON</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>P1 and P2</strong> are in <strong>parallel</strong>, only one must be on to pull up the output to 3V</li>
+  <li><strong>N1 and N2</strong> are connected in series, both must be on to pull down the output to 0V</li>
+</ul>
+
+\[Y = \overline{A \cdot B} = \overline{AB}\]
+
+<h3 id="cmos-and-gate">CMOS AND Gate</h3>
+
+<p>This gate can be made by taking the output of the <strong>NAND</strong> gate and passing it into 
+a <strong>NOT</strong> gate.</p>
+
+\[Y = A \cdot B = AB\]
+
+<h2 id="resources">Resources</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=ubhxKNlOlRg&amp;list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3&amp;index=1">DDCA lecture 1</a></li>
+</ul>
+
+
+        </div>
+    </div>
+  </body>
+</html>

@@ -11,13 +11,13 @@ away at abstraction layers and really understanding how things work using **firs
 principles thinking**. 
 
 ### Areas I'm actively researching:
-- **GPU Programming**
+- **GPU Computing**
 - **Computer Architecture**
 
-You can find a more detailed breakdown of what I'm working on [here](/now/). 
+👉Curious about what I am working on in detail?  
+Check out my [notes](/notes/) or see what I am focused on [here](/now/). 
 
 ### You can follow my progress here:
-- [Notes](/notes/)
 - [GitHub](https://github.com/ElPatatone)
 - [Linkedin](www.linkedin.com/in/hasanur-rahman-mohammad)
 

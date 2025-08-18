@@ -1,11 +1,10 @@
 ---
-title: Why data location matter in GPU computing
-categories: [GPU-Programming]
+title: Why data location matters in GPU computing
+slug: why-data-location-matters-in-gpu-computing
+categories: [GPU-Computing]
 layout: note
 ---
 
-Great video by the way:
-[How GPU computing works? Stephen Jones, GTC 2021 ](https://www.youtube.com/watch?v=3l10o0DYJXg&t=64s) 
 ## Where is my data
 Nobody cares about **FLOPS (Floating Point Operations per Second)**, or we shouldn't 
 really care about it.
@@ -170,3 +169,9 @@ where we are placing the data in the memory.
 Even if we have 5000GB/s memory bandwidth, it won't matter if the latency is 5s due 
 to the data being stored in the HBM, if we cannot move the data closer to the 
 compute units then we will never be able to make us of all the FLOPS the GPU has.
+
+### Resources
+- [How GPU computing works? Stephen Jones, GTC 2021 ](https://www.youtube.com/watch?v=3l10o0DYJXg&t=64s) 
+- [CUDA programming guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/contents.html)
+- [Ampere microarchitecutre](https://en.wikipedia.org/wiki/Ampere_(microarchitecture)) 
+- [A100 whitepaper](https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/nvidia-ampere-architecture-whitepaper.pdf) 

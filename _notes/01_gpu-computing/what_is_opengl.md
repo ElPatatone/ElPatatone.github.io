@@ -1,6 +1,6 @@
 ---
 title: What is OpenGL?
-categories: [GPU-Programming]
+categories: [GPU-Computing]
 layout: note
 ---
 

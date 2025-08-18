@@ -3,15 +3,6 @@ layout: default
 title: Notes 
 ---
 
-<!-- <h1 class="page-title">{{ page.title }}</h1> -->
-<!-- <ul> -->
-<!--   {% for note in site.notes %} -->
-<!--     <li class="post-item"> -->
-<!--         <a href="{{ note.url }}">{{ note.title }}</a> -->
-<!--     </li> -->
-<!--   {% endfor %} -->
-<!-- </ul> -->
-
 <h1 class="page-title">{{ page.title }}</h1>
 <p>
     This is a knowledge base for the information I have compiled while researching 
@@ -22,6 +13,17 @@ title: Notes
     These notes are in no way complete. They will be updated accordingly as my 
     understanding of these topics improves over time.
 </p>
+
+<!-- {% assign categories = site.notes | map: "categories" | uniq %} -->
+<!-- <ul> -->
+<!-- {% for category in categories %} -->
+<!--         {% assign new_url = category | downcase | replace: " ", "-" %} -->
+<!--         <li class="post-item"> -->
+<!--             <a href="{{new_url}}">{{ category }}</a> -->
+<!--         </li> -->
+<!-- {% endfor %} -->
+<!-- </ul> -->
+
 {% assign all_notes = site.notes %}
 {% assign categories = site.notes | map: "categories" | uniq %}
 {% for category in categories %}
@@ -32,6 +34,9 @@ title: Notes
             {% if note.categories contains category %}
             <li class="post-item">
                 <a href="{{ note.url }}">{{ note.title }}</a>
+                <!-- <div class="post-date"> -->
+                <!--     <i>{{ note.date | date: '%B %-d, %Y' }}</i> -->
+                <!-- </div> -->
             </li>
             {% endif %}
         {% endfor %}
