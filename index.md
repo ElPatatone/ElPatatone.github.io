@@ -22,7 +22,7 @@ Check out my [notes](/notes/) or see a more detailed breakdown of what I am work
 
 ### I also share my work here:
 - [GitHub](https://github.com/ElPatatone)
-- [Linkedin](www.linkedin.com/in/hasanur-rahman-mohammad)
+- [Linkedin](https://www.linkedin.com/in/hasanur-rahman-mohammad)
 
 ---
 
