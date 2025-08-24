@@ -20,9 +20,9 @@ in GPUs and next generation architectures.
 Check out my [notes](/notes/) or see a more detailed breakdown of what I am working on
 [here](/now/). 
 
-### I also share my work here:
-- [GitHub](https://github.com/ElPatatone)
-- [Linkedin](https://www.linkedin.com/in/hasanur-rahman-mohammad)
+<!-- ### I also share my work here: -->
+<!-- - [GitHub](https://github.com/ElPatatone) -->
+<!-- - [Linkedin](https://www.linkedin.com/in/hasanur-rahman-mohammad) -->
 
 <!-- --- -->
 
