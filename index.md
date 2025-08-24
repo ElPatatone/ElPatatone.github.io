@@ -24,7 +24,7 @@ Check out my [notes](/notes/) or see a more detailed breakdown of what I am work
 - [GitHub](https://github.com/ElPatatone)
 - [Linkedin](https://www.linkedin.com/in/hasanur-rahman-mohammad)
 
----
+<!-- --- -->
 
-> *“Real understanding begins where the abstractions end.”*  
+<!-- > *“Real understanding begins where the abstractions end.”*   -->
 <!-- > *"What I cannot create, I do not understand" - Richard Feynman*  -->

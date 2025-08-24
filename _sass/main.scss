@@ -3,12 +3,18 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap'); */
 
-body {
+body a {
     /* font-family: "Roboto Mono", monospace; */
     /* border-style: solid; */
     /* border-color: red; */
+    text-decoration: none;
 }
-div.pagecontents {
+
+body a:hover {
+  color: #fff;
+}
+
+div.main-container {
     width: 650px;
     margin: 30px auto 0px auto;
     /* border-style: solid; */
@@ -25,7 +31,7 @@ div.navbar {
 div.navbar a {
     text-decoration: none;
 }
-div.pagecontents p, div.pagecontents li {
+div.main-container p, div.main-container li {
     line-height: 1.2;
     font-size: 16px;
 }
@@ -73,8 +79,32 @@ pre {
     display: inline-block;
     text-decoration: none;
 }
-footer hr {
-    margin-top: 40px;
+
+.footer-container {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* border-style: solid; */
+  /* border-color: red; */
+}
+
+.footer-links-container {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+  margin-top: 15px;
+  /* border-style: solid; */
+  /* border-color: red; */
+}
+
+.quote-container {
+  /* border-style: solid; */
+  /* border-color: red; */
+}
+
+.quote-container em {
+  color: #bbb;
+  /* border-style: solid; */
+  /* border-color: blue; */
 }
 
 table {

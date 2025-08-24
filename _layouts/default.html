@@ -7,12 +7,13 @@
     {% include math.html %}
   </head>
   <body>
-    <div class="pagecontents">
+    <div class="main-container">
         {% include navigation.html %}
         <!-- <h1 class="page-title">{{ page.title }}</h1> -->
-        <div class="container">
+        <div class="content-container">
             {{ content }}
         </div>
+        {% include footer.html %}
     </div>
   </body>
 </html>
