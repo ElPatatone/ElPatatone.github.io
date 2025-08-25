@@ -29,6 +29,8 @@ behind them. So I am going to explore the foundations of computing from the sili
 upwards. I am using the following resources to guide me:
 - **Digital Design and Computer Architecture** - course by Onur Mutlu available on 
 [youtube](https://www.youtube.com/watch?v=ubhxKNlOlRg&list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3) 
+    - This also includes **Hardware Description Languages** to actually implement the 
+      things I learn about. (right now I just have **iverilog** working...)
 - **Computer Architecture: A Quantitative Approach** - book 
 
 ---

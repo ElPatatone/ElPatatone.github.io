@@ -21,7 +21,7 @@ div.main-container {
 }
 
 div.navbar {
-  width: 250px;
+  width: 300px;
   display: flex;
   justify-content: space-between;
   /* padding: 10px 20px; */
