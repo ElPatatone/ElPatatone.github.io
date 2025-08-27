@@ -168,5 +168,5 @@ N-input M-output function.
 ripple carry adder  
 lookahead adder
 
-## Resources
+## References
 - [DDCA lecture 2](https://www.youtube.com/watch?v=U-4jmbm8inw&list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3&index=2) 

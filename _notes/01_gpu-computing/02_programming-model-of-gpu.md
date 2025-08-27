@@ -145,6 +145,6 @@ of hardware.
 It then it makes the software think there is only one type of hardware and the makes
 the hardware think there is only one type of software.
 
-## Resources
+## References
 - [PMPP lecture 2](https://www.youtube.com/watch?v=iE-xGWBQtH0&list=PLRRuQYjFhpmubuwx-w8X964ofVkW1T8O4&index=2)
 - [What is CUDA - computerphile](https://www.youtube.com/watch?v=K9anz4aB0S0&t=169s)

@@ -59,5 +59,5 @@ I look at this concept in more detail [here](/notes/gpu-computing/why-data-locat
 operations take, but if you want your processors to have high throughput then you want
 to have more cores and will tolerate the higher latency.
 
-## Resources
+## References
 - [PMPP lecture 4](https://www.youtube.com/watch?v=pBQJAwogMoE&list=PLRRuQYjFhpmubuwx-w8X964ofVkW1T8O4&index=4) 

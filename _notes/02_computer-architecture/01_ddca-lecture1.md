@@ -140,5 +140,5 @@ Y = A \cdot B = AB
 
 $$
 
-## Resources
+## References
 - [DDCA lecture 1](https://www.youtube.com/watch?v=ubhxKNlOlRg&list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3&index=1) 

@@ -170,7 +170,7 @@ Even if we have 5000GB/s memory bandwidth, it won't matter if the latency is 5s 
 to the data being stored in the HBM, if we cannot move the data closer to the 
 compute units then we will never be able to make us of all the FLOPS the GPU has.
 
-### Resources
+### References
 - [How GPU computing works? Stephen Jones, GTC 2021 ](https://www.youtube.com/watch?v=3l10o0DYJXg&t=64s) 
 - [CUDA programming guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/contents.html)
 - [Ampere microarchitecutre](https://en.wikipedia.org/wiki/Ampere_(microarchitecture)) 

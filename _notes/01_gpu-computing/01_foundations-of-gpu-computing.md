@@ -114,5 +114,5 @@ manufacturer going ahead with it is low.
 
 [look up] tenstorrent
 
-## Resources
+## References
 - [PMPP lecture 1](https://www.youtube.com/watch?v=4pkbXmE4POc&list=PLRRuQYjFhpmubuwx-w8X964ofVkW1T8O4&index=1) 
