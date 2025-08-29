@@ -33,6 +33,18 @@ upwards. I am using the following resources to guide me:
       things I learn about. (right now I just have **iverilog** working...)
 - **Computer Architecture: A Quantitative Approach** - book 
 
+## AI workloads
+
+I first explored AI, specifically computer vision applications, during my university 
+degree. But it then got pushed into the backburner for a long while, until very 
+recently, when I started exploring how **GPU computing** is transforming the way we
+approach and solve problems.
+
+This renewed focus on AI is a welcome surpise, it's like welcoming an old friend.
+
+Right now I am researching **GNNs** as I find the **graph structure** fascinating as 
+it can represent so many aspects of the world around us.
+
 ---
 
 You can follow my progress and detailed notes on these topics on the [notes page](/notes/) 
