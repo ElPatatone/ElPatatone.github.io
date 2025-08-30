@@ -1,12 +1,10 @@
 ---
 layout: default
 title: What I'm doing now 
-last-modified: 05/08/2025
+last-modified: 30/08/2025
 ---
 
 # {{page.title}}
-
-Right now I am focused on two main topics: 
 
 ## GPU Computing
 
@@ -22,6 +20,19 @@ using CUDA. I am following several resources but I reccommend these to get start
 - **CUDA programming guide** - official NVIDIA docs 
 - **CUDA by Example** - book
 
+## AI workloads
+
+I first explored AI, specifically computer vision applications, during my university 
+degree. But it then got pushed into the backburner for a long while, until very 
+recently, when I started exploring how **GPU computing** is transforming the way we
+approach and solve problems.
+
+This renewed focus on AI is like welcoming an old friend. Right now I am researching 
+2 specific domains in AI:
+- **GNNs** as I find the **graph structure** fascinating as it can represent so many
+aspects of the world around us. 
+- **Computer Vision**, where you a computer learns how to perceive the world around it.
+
 ## Computer Architecture
 
 You can't really understand GPUs without understanding the underlying architecture 
@@ -30,20 +41,9 @@ upwards. I am using the following resources to guide me:
 - **Digital Design and Computer Architecture** - course by Onur Mutlu available on 
 [youtube](https://www.youtube.com/watch?v=ubhxKNlOlRg&list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3) 
     - This also includes **Hardware Description Languages** to actually implement the 
-      things I learn about. (right now I just have **iverilog** working...)
+      things I learn about. (right now I just have **ICarus Verilog (iverilog)**
+      working...)
 - **Computer Architecture: A Quantitative Approach** - book 
-
-## AI workloads
-
-I first explored AI, specifically computer vision applications, during my university 
-degree. But it then got pushed into the backburner for a long while, until very 
-recently, when I started exploring how **GPU computing** is transforming the way we
-approach and solve problems.
-
-This renewed focus on AI is a welcome surpise, it's like welcoming an old friend.
-
-Right now I am researching **GNNs** as I find the **graph structure** fascinating as 
-it can represent so many aspects of the world around us.
 
 ---
 
