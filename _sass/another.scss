@@ -1,0 +1,59 @@
+/*
+Base styling */
+
+.highlight {
+  background: #000000; /* palette.bg */
+  color: #c1c1c1;      /* palette.fg */
+  font-family: monospace;
+  padding: 0.5em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Keywords like #include */
+.highlight .k {
+  color: #FFAB70;  /* keyword */
+  font-weight: bold;
+}
+
+/* Strings like <stdio.h> */
+.highlight .s {
+  color: #95E19A;  /* string */
+}
+
+/* Types and function names */
+.highlight .kt,  /* keyword types */
+.highlight .nf   /* name function */ {
+  color: #bb9af7;
+}
+
+/* Parentheses */
+.highlight .p {
+  color: #9e9eff;
+}
+
+/* Variable names (arguments) */
+.highlight .nv {
+  color: #9e9eff;
+}
+
+/* Comments */
+.highlight .c {
+  color: #505050;
+  font-style: italic;
+}
+
+/* Operators */
+.highlight .o {
+  color: #63616b;
+}
+
+/* Numbers */
+.highlight .m {
+  color: #aaaaaa;
+}
+
+/* Other punctuation */
+.highlight .punc {
+  color: #9e9eff;
+}

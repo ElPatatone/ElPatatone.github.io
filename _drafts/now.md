@@ -1,0 +1,55 @@
+---
+layout: default
+title: What I'm doing now 
+last-modified: 24/12/2025
+---
+
+# {{page.title}}
+
+## GPU Computing
+
+I first got interested in **GPUs** when I was building my first PC, I remember
+seeing the name **NVIDIA** for the first time back then and buying an **RTX 2060**
+with the only goal being running games at high quality.  
+
+Now, I am researching anything GPU, from GPU microarchitecture to programming on GPUs
+using CUDA. I am following several resources but I reccommend these to get started:
+- **PMPP (Programming Massively Parallel Processors)** - book/video lectures
+- **NVIDIA whitepapers** - great to break down the microarchitecture and design 
+                           decisions for different chips
+- **CUDA programming guide** - official NVIDIA docs 
+- **CUDA by Example** - book
+
+<!-- ## AI workloads -->
+<!---->
+<!-- I first explored AI, specifically computer vision applications, during my university  -->
+<!-- degree. But it then got pushed into the backburner for a long while, until very  -->
+<!-- recently, when I started exploring how **GPU computing** is transforming the way we -->
+<!-- approach and solve problems. -->
+<!---->
+<!-- This renewed focus on AI is like welcoming an old friend. Right now I am researching  -->
+<!-- 2 specific domains in AI: -->
+<!-- - **GNNs** as I find the **graph structure** fascinating as it can represent so many -->
+<!-- aspects of the world around us.  -->
+<!-- - **Computer Vision**, where you a computer learns how to perceive the world around it. -->
+<!---->
+<!-- ## Computer Architecture -->
+<!---->
+<!-- You can't really understand GPUs without understanding the underlying architecture  -->
+<!-- behind them. So I am going to explore the foundations of computing from the silicon -->
+<!-- upwards. I am using the following resources to guide me: -->
+<!-- - **Digital Design and Computer Architecture** - course by Onur Mutlu available on  -->
+<!-- [youtube](https://www.youtube.com/watch?v=ubhxKNlOlRg&list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3)  -->
+<!--     - This also includes **Hardware Description Languages** to actually implement the  -->
+<!--       things I learn about. (right now I just have **ICarus Verilog (iverilog)** -->
+<!--       working...) -->
+<!-- - **Computer Architecture: A Quantitative Approach** - book  -->
+
+---
+
+<!-- You can follow my progress and detailed notes on these topics on the [notes page](/notes/)  -->
+
+***Last modified: {{page.last-modified}}*** 
+
+
+

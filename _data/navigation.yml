@@ -1,0 +1,10 @@
+# - name: HOME
+#   link: / 
+# - name: BLOG
+#   link: /blog/
+# - name: PROJECTS
+#   link: /projects/
+# - name: NOTES
+#   link: /notes/
+# - name: NOW
+#   link: /now/
