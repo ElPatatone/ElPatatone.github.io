@@ -1,39 +1,80 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"); */
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap'); */
+@charset "UTF-8";
+/* =========================================
+   COLOUR SYSTEM — MIDNIGHT VIOLET
+   ========================================= */
+:root {
+  /* Backgrounds */
+  --color-background: #0D0D12;
+  --color-surface: #171720;
+  --color-surface-alt: #20202B;
+  /* Typography */
+  --color-text: #E6E1F0;
+  --color-text-muted: #858394;
+  --color-heading: #BB9AF7;
+  /* Accents */
+  --color-accent: #A78BFA;
+  --color-accent-hover: #C4B5FD;
+  --color-link: #A78BFA;
+  --color-link-hover: #C4B5FD;
+  /* Borders and dividers */
+  --color-border: #343440;
+  --color-divider: #858394;
+  /* Code */
+  --color-code-text: #BB9AF7;
+  --color-code-inline: #A78BFA;
+  --color-code-background: #171720;
+  /* Tables */
+  --color-table-background: #171720;
+  --color-table-background-alt: #20202B;
+  --color-table-border: #343440;
+  /* Status */
+  --color-new: #F87171;
+}
+
+/* =========================================
+   GLOBAL STYLES
+   ========================================= */
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
 body a {
-  /* font-family: "Roboto Mono", monospace; */
-  /* border-style: solid; */
-  /* border-color: red; */
   text-decoration: none;
 }
 
 body a:hover {
-  color: #fff;
+  color: var(--color-link-hover);
 }
 
+a[href] {
+  color: var(--color-link);
+}
+
+strong {
+  color: var(--color-accent);
+}
+
+/* =========================================
+   LAYOUT
+   ========================================= */
 div.main-container {
   width: 650px;
   margin: 30px auto 0px auto;
-  /* border-style: solid; */
-  /* border-color: red; */
 }
 
 div.navbar {
   width: 200px;
   display: flex;
   justify-content: space-between;
-  /* padding: 10px 20px; */
-  /* border-style: solid; */
-  /* border-color: blue; */
 }
 
 div.navbar a {
   text-decoration: none;
 }
 
-div.main-container p, div.main-container li {
+div.main-container p,
+div.main-container li {
   line-height: 1.2;
   font-size: 16px;
 }
@@ -41,172 +82,54 @@ div.main-container p, div.main-container li {
 li.post-item {
   display: table;
   width: 100%;
-  /* border-style: solid; */
-  /* border-color: yellow; */
 }
 
 a.post-title {
   float: left;
   text-decoration: none;
-  /* border-style: solid; */
-  /* border-color: red; */
 }
 
 div.post-date {
   float: right;
-  /* border-style: solid; */
-  /* border-color: red; */
 }
 
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
 h1, h2, h3 {
-  color: #bb9af7;
-  /* color: #A0A0A0; */
-  /* border-style: solid; */
-  /* border-color: red; */
+  color: var(--color-heading);
 }
 
 aside {
-  /*  margin-top: -20px;
-      margin-bottom: -10px; */
   margin-left: 20px;
   font-style: italic;
 }
 
+/* =========================================
+   CODE BLOCKS
+   ========================================= */
 pre {
   overflow: auto;
   word-wrap: normal;
   white-space: pre;
   display: block;
   padding: 15px;
-}
-
-.newlink:after {
-  content: "(new!)";
-  padding-left: 5px;
-  color: red;
-  font-style: italic;
-  display: inline-block;
-  text-decoration: none;
-}
-
-.footer-container {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* border-style: solid; */
-  /* border-color: red; */
-}
-
-.footer-links-container {
-  display: flex;
-  /* flex-direction: column; */
-  gap: 10px;
-  margin-top: 15px;
-  /* border-style: solid; */
-  /* border-color: red; */
-}
-
-.quote-container {
-  /* border-style: solid; */
-  /* border-color: red; */
-}
-
-.quote-container em {
-  color: #bbb;
-  /* border-style: solid; */
-  /* border-color: blue; */
-}
-
-table {
-  margin: 15px 0;
-  padding: 0;
-}
-
-table tr {
-  border-top: 1px solid #cccccc;
-  background-color: white;
-  margin: 0;
-  padding: 0;
-}
-
-table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-table tr th {
-  font-weight: bold;
-  border: 1px solid #cccccc;
-  text-align: left;
-  margin: 0;
-  padding: 6px 13px;
-}
-
-table tr td {
-  border: 1px solid #cccccc;
-  text-align: left;
-  margin: 0;
-  padding: 6px 13px;
-}
-
-table tr th :first-child, table tr td :first-child {
-  margin-top: 0;
-}
-
-table tr th :last-child, table tr td :last-child {
-  margin-bottom: 0;
-}
-
-/* Thanks to
-https://css-tricks.com/snippets/css/prevent-superscripts-and-subscripts-from-affecting-line-height/
-*/
-sup, sub {
-  vertical-align: baseline;
-  position: relative;
-  top: -0.4em;
-}
-
-sub {
-  top: 0.4em;
-}
-
-mjx-container[jax=SVG] {
-  font-size: 135%; /* Adjust this to your liking */
-}
-
-body {
-  color: #ffffff;
-  background: #000000;
-  /* background: #101010; */
-}
-
-a[href] {
-  color: #9e9eff;
-  /* color: #808080; */
-}
-
-strong {
-  color: #9e9eff;
+  background: var(--color-code-background);
 }
 
 code.highlighter-rouge {
-  /* color: #FFAB70; */
-  color: #9e9eff;
+  color: var(--color-code-text);
   font-size: 15px;
 }
 
-table tr {
-  border-top: 1px solid #555;
-  background-color: #121212;
+li code,
+p code {
+  color: var(--color-code-inline);
 }
 
-table tr:nth-child(2n) {
-  background-color: #212121;
-}
-
-li code, p code {
-  color: #909090;
-}
-
-/* Stuff for posts */
+/* =========================================
+   POSTS
+   ========================================= */
 img.post-inline-image {
   display: block;
   margin: 0 auto;
@@ -218,10 +141,104 @@ div.post-co-authors {
   padding-top: 10px;
 }
 
-/* TODO(max): See https://alexwlchan.net/2021/10/console-copying/ to disable
- * prompt selection in console blocks */
-/* Begin: display a small horizontal bar before footnote elements if they
- * exist. */
+.newlink:after {
+  content: "(new!)";
+  padding-left: 5px;
+  color: var(--color-new);
+  font-style: italic;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer-container {
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+.footer-links-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* =========================================
+   QUOTES
+   ========================================= */
+.quote-container em {
+  color: var(--color-text-muted);
+}
+
+/* =========================================
+   TABLES
+   ========================================= */
+table {
+  margin: 15px 0;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-top: 1px solid var(--color-table-border);
+  background-color: var(--color-table-background);
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n) {
+  background-color: var(--color-table-background-alt);
+}
+
+table tr th,
+table tr td {
+  border: 1px solid var(--color-table-border);
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th {
+  font-weight: bold;
+}
+
+table tr th :first-child,
+table tr td :first-child {
+  margin-top: 0;
+}
+
+table tr th :last-child,
+table tr td :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   SUPERSCRIPTS AND SUBSCRIPTS
+   ========================================= */
+/* Thanks to:
+   https://css-tricks.com/snippets/css/prevent-superscripts-and-subscripts-from-affecting-line-height/
+*/
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+
+sub {
+  top: 0.4em;
+}
+
+/* =========================================
+   MATHEMATICAL EXPRESSIONS
+   ========================================= */
+mjx-container[jax=SVG] {
+  font-size: 135%;
+}
+
+/* =========================================
+   FOOTNOTES
+   ========================================= */
 div.footnotes {
   position: relative;
   display: inline-block;
@@ -229,17 +246,19 @@ div.footnotes {
 }
 
 div.footnotes:before {
-  /* Element only present when there are footnotes. */
   content: "";
   width: 50%;
   left: 25%;
   height: 2px;
-  background: #b0b0b0;
+  background: var(--color-divider);
   position: absolute;
   top: -1px;
 }
 
-/* End horizontal bar. */
+div.footnotes hr {
+  display: none;
+}
+
 a.footnote:before {
   content: "[";
 }
@@ -248,7 +267,12 @@ a.footnote:after {
   content: "]";
 }
 
-figure object, figure svg, figure img {
+/* =========================================
+   FIGURES
+   ========================================= */
+figure object,
+figure svg,
+figure img {
   max-width: 100%;
   display: block;
   margin: auto;
@@ -262,11 +286,6 @@ figcaption::before {
   counter-increment: figures;
   content: "Fig. " counter(figures) " - ";
   font-weight: bold;
-}
-
-/* gojekyll includes an <hr> in footnotes that we don't want */
-div.footnotes hr {
-  display: none;
 }
 
 /*! jellybeans http://bytefluent.com/devify/ (original https://github.com/nanotech/jellybeans.vim) */
